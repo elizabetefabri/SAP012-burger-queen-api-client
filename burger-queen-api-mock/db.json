@@ -65,12 +65,6 @@
     },
     {
       "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
     }
   ],
   "products": [
@@ -266,12 +260,6 @@
       "password": "$2a$10$YG93nC0ZeYxdfv8Db2iHTuRmOltzJNIXR/CjXZZQAGrsrMEber1Zy",
       "role": "chef",
       "id": 4
-    },
-    {
-      "email": "lais.hopper@systers.xyz",
-      "password": "$2a$10$zXO8H9GYr7HeOQIhR4Kzg.HTK7UfrK.wLhzHVsnIMN6KG/emQQpO.",
-      "role": "chef-premium",
-      "id": 5
     }
   ]
 }
