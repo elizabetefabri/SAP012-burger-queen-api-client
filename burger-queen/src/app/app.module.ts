@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/registrar-mesa.component';
+import { CardsMesaComponent } from './Layout/Components/registrar-mesa/cards-mesa/cards-mesa.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/regis
     LoginComponent,
     HomeComponent,
     CadastroComponent,
-    RegistrarMesaComponent
+    RegistrarMesaComponent,
+    CardsMesaComponent
   ],
   imports: [
     BrowserModule,
