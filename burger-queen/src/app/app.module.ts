@@ -9,13 +9,15 @@ import { CadastroComponent } from './Layout/Components/cadastro/cadastro.compone
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/registrar-mesa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CadastroComponent
+    CadastroComponent,
+    RegistrarMesaComponent
   ],
   imports: [
     BrowserModule,
