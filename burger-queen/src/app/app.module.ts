@@ -9,7 +9,8 @@ import { CadastroComponent } from './Layout/Components/cadastro/cadastro.compone
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { AnotarPedidoComponent } from './Layout/Components/anotar-pedido/anotar-pedido.component';
+import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/registrar-mesa.component';
+import { CardsMesaComponent } from './Layout/Components/registrar-mesa/cards-mesa/cards-mesa.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AnotarPedidoComponent } from './Layout/Components/anotar-pedido/anotar-
     LoginComponent,
     HomeComponent,
     CadastroComponent,
-    AnotarPedidoComponent
+    RegistrarMesaComponent,
+    CardsMesaComponent
   ],
   imports: [
     BrowserModule,

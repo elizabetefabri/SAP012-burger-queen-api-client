@@ -1,0 +1,13 @@
+.container__card-mesa{
+  width: 200px;
+  height: 200px;
+  box-shadow: 0px -1px 14px -4px rgba(0,0,0,0.75);
+  transition: transform 0.3s ease-in-out;
+}
+.container__card-mesa:hover{
+  transform: translateY(-5px);
+}
+.container__card-mesa img{
+  width: 100px;
+  height: 100px;
+}
