@@ -11,6 +11,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/registrar-mesa.component';
 import { CardsMesaComponent } from './Layout/Components/registrar-mesa/cards-mesa/cards-mesa.component';
+import { RegistrarPedidoComponent } from './Layout/Components/registrar-pedido/registrar-pedido.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
+import { CardsPedidoComponent } from './Layout/Components/registrar-pedido/cards-pedido/cards-pedido.component';
+import { MenuTabsComponent } from './Layout/Components/registrar-pedido/menu-tabs/menu-tabs.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +24,19 @@ import { CardsMesaComponent } from './Layout/Components/registrar-mesa/cards-mes
     HomeComponent,
     CadastroComponent,
     RegistrarMesaComponent,
-    CardsMesaComponent
+    CardsMesaComponent,
+    RegistrarPedidoComponent,
+    CardsPedidoComponent,
+    MenuTabsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
