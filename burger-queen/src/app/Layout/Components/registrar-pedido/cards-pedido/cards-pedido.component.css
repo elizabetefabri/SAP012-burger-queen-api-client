@@ -1,0 +1,35 @@
+.container__card-produtos{
+  width: 325px;
+  height: 130px;
+
+  box-shadow: 0px -1px 14px -4px rgba(0,0,0,0.75);
+  transition: transform 0.3s ease-in-out;
+}
+.container__card-produtos:hover{
+  transform: translateY(-5px);
+}
+.container__card-produtos img{
+  width: 80px;
+  height: 80px;
+}
+h3 {
+  font-size: 20px;
+}
+h4 {
+  font-size: 16x;
+  margin-top:-15px;
+}
+span {
+  font-size: 18px;
+}
+button{
+  border-radius: 50%;
+}
+.texto {
+  padding: 5px;
+}
+.container__toggle{
+  margin-top: 40px;
+  border-radius: 20px;
+  padding: 5px;
+}
