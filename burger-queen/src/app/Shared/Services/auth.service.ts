@@ -21,9 +21,8 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  // Método para logout
   logout(): void {
     localStorage.removeItem('token');
   }
-// o serviço aqui utilizado ira ser realizado somente para logar
+
 }
