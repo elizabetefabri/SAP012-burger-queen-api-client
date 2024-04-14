@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CardsPedidoComponent } from './Layout/Components/registrar-pedido/cards-pedido/cards-pedido.component';
 import { MenuTabsComponent } from './Layout/Components/registrar-pedido/menu-tabs/menu-tabs.component';
+import { FinalizarPedidoComponent } from './Layout/Components/registrar-pedido/finalizar-pedido/finalizar-pedido.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MenuTabsComponent } from './Layout/Components/registrar-pedido/menu-tab
     CardsMesaComponent,
     RegistrarPedidoComponent,
     CardsPedidoComponent,
-    MenuTabsComponent
+    MenuTabsComponent,
+    FinalizarPedidoComponent
   ],
   imports: [
     BrowserModule,
