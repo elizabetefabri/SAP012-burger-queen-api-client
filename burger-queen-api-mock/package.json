@@ -12,5 +12,8 @@
   "dependencies": {
     "json-server": "^0.17.0",
     "json-server-auth": "^2.1.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.22.1"
   }
 }
