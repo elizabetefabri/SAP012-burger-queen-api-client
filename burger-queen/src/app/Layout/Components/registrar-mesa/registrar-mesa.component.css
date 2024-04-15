@@ -1,0 +1,14 @@
+span {
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+a {
+  cursor: pointer;
+}
+i:hover {
+  transform: scale(1.02);
+  opacity: 1;
+}
+i{
+  font-size: 20px;
+}

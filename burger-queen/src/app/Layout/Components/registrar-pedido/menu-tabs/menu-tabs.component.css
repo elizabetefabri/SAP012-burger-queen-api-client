@@ -13,7 +13,7 @@
 }
 
 ::ng-deep .mat-mdc-tab-header-paginator-chevron {
-  border-color: var(--mdc-theme-on-surface, #459975)!important;
+  border-color: var(--mdc-theme-on-surface, #C2410C)!important;
 }
 
 ::ng-deep .mdc-tab {
@@ -32,21 +32,21 @@
 ::ng-deep .mat-mdc-tab-group.mat-success .mat-mdc-tab-link:not(.mat-mdc-tab-disable).mat--tab-active .mdc-tab__text-label,
 ::ng-deep .mat-mdc-tab-nav-bar.mat-success .mat-mdc-tab:not(.mat-mdc-tab-disable).mat-tab--active .mdc-tab__text-label,
 ::ng-deep .mat-mdc-tab-nav-bar.mat-success .mat-mdc-tab-link:not(.mat-mdc-tab-disable).mat-tab--active .mdc-tab__text-label {
-  color: #459975 !important;
+  color: #C2410C !important;
 }
 
 ::ng-deep .mat-mdc-tab-group.mat-success .mat-mdc-tab:not(.mat-mdc-tab-disable) .mdc-tab-indicator__content--underline,
 ::ng-deep .mat-mdc-tab-group.mat-success .mat-mdc-tab-link:not(.mat-mdc-tab-disable) .mdc-tab-indicator__content--underline,
 ::ng-deep .mat-mdc-tab-nav-bar.mat-success .mat-mdc-tab:not(.mat-mdc-tab-disable) .mdc-tab-indicator__content--underline,
 ::ng-deep .mat-mdc-tab-nav-bar.mat-success .mat-mdc-tab-link:not(.mat-mdc-tab-disable) .mdc-tab-indicator__content--underline {
-  border-color: var(--mdc-tab-inidicator-active-indicator-color, #459975) !important;
+  border-color: var(--mdc-tab-inidicator-active-indicator-color, #C2410C) !important;
 }
 
 ::ng-deep .mat-mdc-tab-group.mat-success .mdc-tab__ripple::before,
 ::ng-deep .mat-mdc-tab-group.mat-success .mat-mdc-tab .mat-ripple-element,
 ::ng-deep .mat-mdc-tab-nav-bar.mat-success .mat-mdc-tab-header-pagination .mat-ripple-element,
 ::ng-deep .mat-mdc-tab-nav-bar.mat-success  .mat-mdc-tab-link .mat-mdc-tab-link .mat-ripple-element{
-  background-color: #459975!important;
+  background-color: #C2410C!important;
   border-radius: 5px 5px 0 0;
 }
 
@@ -54,5 +54,5 @@
 ::ng-deep .mat-mdc-tab-group.mat-success ,
 ::ng-deep .mat-mdc-tab-nav-bar.mat-success ,
 ::ng-deep .mat-mdc-tab-nav-bar.mat-success  {
-  border-color: var(--mdc-tab-inidicator-active-indicator-color, #459975) !important;
+  border-color: var(--mdc-tab-inidicator-active-indicator-color, #C2410C) !important;
 } */

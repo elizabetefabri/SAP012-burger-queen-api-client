@@ -1,28 +1,32 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit{
   readonly apiUrl: string = environment.API_URL;
 
   constructor(
-    readonly http: HttpClient,
+    private http: HttpClient,
    ) { }
 
-   login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email, password });
-  }
-   // Método para verificar se o usuário está logado
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
-  logout(): void {
-    localStorage.removeItem('token');
+  //  login(email: string, password: string): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/login`, { email, password });
+  // }
+
+  login() {
+    localStorage.setItem('token', '123456')
+  }
+
+  logout(){
+    localStorage.clear();
   }
 
 }
