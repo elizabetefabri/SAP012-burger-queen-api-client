@@ -1,32 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit{
-  readonly apiUrl: string = environment.API_URL;
+export class AuthService {
+  private readonly apiUrl = environment.API_URL;
 
-  constructor(
-    private http: HttpClient,
-   ) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  login(email: string, password: string) {
+    return this.http.post<any>(`${this.apiUrl}/login`, { email, password }).subscribe({
+      next: (response) => {
+        localStorage.setItem('token', response.accessToken);
+        this.router.navigate(['/registrar-mesa']);
+      },
+      error: (error) => {
+        console.error('Erro de autenticação:', error);
+        alert('Email ou senha incorretos.');
+      }
+    });
   }
 
-  //  login(email: string, password: string): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/login`, { email, password });
-  // }
-
-  login() {
-    localStorage.setItem('token', '123456')
-  }
-
-  logout(){
+  logout() {
     localStorage.clear();
+    this.router.navigate(['/login']);
   }
-
 }
