@@ -1,5 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Shared/Services/auth.service';
 
 @Component({
   selector: 'app-registrar-pedido',
@@ -20,4 +22,9 @@ import { Component } from '@angular/core';
 
 export class RegistrarPedidoComponent {
 
+  constructor(private auth: AuthService, private router: Router) {}
+
+  deslogar(){
+    this.auth.logout()
+  }
 }
