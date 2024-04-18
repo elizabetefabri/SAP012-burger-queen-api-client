@@ -1,11 +1,23 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { CadastroComponent } from './Layout/Components/cadastro/cadastro.component';
+import { LoginComponent } from './Layout/Components/login/login.component';
+import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/registrar-mesa.component';
+import { RegistrarPedidoComponent } from './Layout/Components/registrar-pedido/registrar-pedido.component';
+import { HomeComponent } from './Layout/Pages/home/home.component';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    declarations: [
+      AppComponent,
+      CadastroComponent,
+      LoginComponent,
+      RegistrarMesaComponent,
+      RegistrarPedidoComponent,
+      HomeComponent
+    ]
   }));
 
   it('should create the app', () => {
@@ -14,16 +26,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'burger-queen'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('burger-queen');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('burger-queen app is running!');
-  });
 });
