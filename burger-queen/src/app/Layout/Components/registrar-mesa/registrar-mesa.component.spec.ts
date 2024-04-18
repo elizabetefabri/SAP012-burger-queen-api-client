@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegistrarMesaComponent } from './registrar-mesa.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CardsMesaComponent } from './cards-mesa/cards-mesa.component';
+import { RouterModule } from '@angular/router';
+
 
 describe('RegistrarMesaComponent', () => {
   let component: RegistrarMesaComponent;
@@ -8,7 +12,14 @@ describe('RegistrarMesaComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RegistrarMesaComponent]
+      declarations: [
+        RegistrarMesaComponent,
+        CardsMesaComponent
+      ],
+      imports: [
+        RouterModule.forRoot([]),
+        HttpClientModule
+      ]
     });
     fixture = TestBed.createComponent(RegistrarMesaComponent);
     component = fixture.componentInstance;
