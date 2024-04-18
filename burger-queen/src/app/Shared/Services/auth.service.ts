@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(email: string, password: string) {
+  login(email: string, password: string): Subscription {
     return this.http.post<any>(`${this.apiUrl}/login`, { email, password }).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.accessToken);
