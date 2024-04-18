@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/Shared/Services/auth.service';
+import { Login } from 'src/Models/Login';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +11,22 @@ import { AuthService } from 'src/app/Shared/Services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  email: string = '';
-  password: string = '';
+  loginData: Login = {id:0, email:"", senha:""}
 
   constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
   onLogin() {
-    this.auth.login()
+    if (this.loginData.email && this.loginData.senha) {
+      this.auth.login(this.loginData.email, this.loginData.senha);
+    } else {
+      alert('Por favor, preencha todos os campos.');
+    }
   }
 
-  deslogar(){
-    this.auth.logout()
+  deslogar() {
+    this.auth.logout();
   }
 
 }

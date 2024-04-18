@@ -12,7 +12,7 @@
         >
         <input
           class="text-color-font-white border border-color-font-orange bg-transparent p-2 w-full h-[50px]"
-          [(ngModel)]="email"
+          [(ngModel)]="loginData.email"
           type="email"
           placeholder="Digite seu e-mail"
           name="email"
@@ -21,16 +21,16 @@
           >
         <input
           class="text-color-font-white border border-color-font-orange bg-transparent p-2 w-full h-[50px]"
-          [(ngModel)]="password"
+          [(ngModel)]="loginData.senha"
           type="password"
-          name="password"
-          id="password"
+          name="senha"
+          id="senha"
           placeholder="Senha"
           required
           >
           <div class="flex justify-between items-center space-x-2.5">
             <button
-              (click)="onLogin()"
+              type="submit"
               class="btn btnEntrar content-center text-color-font-white bg-color-font-orange p-2 w-full h-[50px] hover:bg-orange-600 hover:text-color-background">
               Entrar
             </button>
