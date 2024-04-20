@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.development';
 import { Products } from 'src/Models/Produto';
 import { formatProducts } from 'src/Utils/transforms';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,13 @@ export class ProductsService {
 
   private readonly apiUrl: string = environment.API_URL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
    // Método para listar todos os produtos
    listProducts(): Observable<Products[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/products`).pipe(
+    const headers = this.solicitarAuthorizationHeader();
+
+    return this.http.get<any[]>(`${this.apiUrl}/products`, { headers }).pipe(
       map(data => data.map(apiData => formatProducts(apiData))),
       catchError(this.handleError)
     );

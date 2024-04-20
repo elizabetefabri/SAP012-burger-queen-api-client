@@ -32,14 +32,14 @@ export class RegistrarPedidoComponent implements OnInit{
   }
 
   loadProducts(): void {
-    this.productService.listProducts().subscribe(
-      (data: Products[]) => {
+    this.productService.listProducts().subscribe({
+      next: (data: Products[]) => {
         this.product = data;
       },
-      error => {
-        console.log('Erro ao carregar produtos: ', error);
+      error: (error) => {
+        console.log('Erro ao processar a solicitação:', error);
       }
-    )
+    });
   }
 
   deslogar(){
