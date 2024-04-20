@@ -1,59 +1,23 @@
-<section class="container__registra-produtos pr-1 pl-1 bg-color-background-logado min-h-screen flex ">
+<section class="container__registra-produtos pr-1 pl-1 bg-color-background-logado min-h-screen flex">
   <main class="container__main max-w-[1000px] w-full mx-auto mt-4">
     <div class="container__card grid grid-cols-3 gap-1">
-
-      <div class="container__card-produtos relative border-2 border-color-border-gray rounded-lg flex items-center justify-between">
-        <img src="../../../../../assets/images/burger.svg" alt="Imagem da produtos" >
-          <div class="texto text-left">
-            <h3 class="text-color-font-white">Cheese burger</h3>
-            <h4 class="text-color-font-gray">Cheese burger</h4>
-            <span class="text-color-font-white">R$ 24.00</span>
+      <div *ngFor="let product of products"
+           class="container__card-produtos relative border-2 border-color-border-gray rounded-lg flex items-center justify-around">
+        <img [src]="product.image" [alt]="product.name">
+        <div class="texto text-left">
+          <h3 class="text-color-font-white">{{ product.name }}</h3>
+          <span class="text-color-font-white">R$ {{ product.price }}</span>
+        </div>
+        <div class="container__toggle bg-color-header flex items-center rounded-lg ">
+          <div class="product-counter ">
+            <button class="decrease-btn bg-color-border-gray p-1"><i class="fas fa-minus text-color-font-white"></i></button>
+            <span class="quantity text-color-font-white px-1">1</span>
+            <button class="increase-btn bg-color-border-gray p-1"><i class="fas fa-plus text-color-font-white"></i></button>
           </div>
-
-          <div class="container__toggle bg-color-header flex items-center justify-between rounded-lg ">
-            <div class="product-counter ">
-              <button class="decrease-btn bg-color-border-gray p-2"><i class="fas fa-minus text-color-font-white"></i></button>
-              <span class="quantity text-color-font-white px-1">1</span>
-              <button class="increase-btn bg-color-border-gray p-2"><i class="fas fa-plus text-color-font-white"></i></button>
-            </div>
-          </div>
-      </div>
-
-      <div class="container__card-produtos relative border-2 border-color-border-gray rounded-lg flex items-center justify-between">
-        <img src="../../../../../assets/images/burger.svg" alt="Imagem da produtos" >
-          <div class="texto text-left">
-            <h3 class="text-color-font-white">Cheese burger</h3>
-            <h4 class="text-color-font-gray">Cheese burger</h4>
-            <span class="text-color-font-white">R$ 24.00</span>
-          </div>
-
-          <div class="container__toggle bg-color-header flex items-center justify-between rounded-lg ">
-            <div class="product-counter ">
-              <button class="decrease-btn bg-color-border-gray p-2"><i class="fas fa-minus text-color-font-white"></i></button>
-              <span class="quantity text-color-font-white px-1">1</span>
-              <button class="increase-btn bg-color-border-gray p-2"><i class="fas fa-plus text-color-font-white"></i></button>
-            </div>
-          </div>
-      </div>
-
-      <div class="container__card-produtos relative border-2 border-color-border-gray rounded-lg flex items-center justify-between">
-        <img src="../../../../../assets/images/burger.svg" alt="Imagem da produtos" >
-          <div class="texto text-left">
-            <h3 class="text-color-font-white">Cheese burger</h3>
-            <h4 class="text-color-font-gray">Cheese burger</h4>
-            <span class="text-color-font-white">R$ 24.00</span>
-          </div>
-
-          <div class="container__toggle bg-color-header flex items-center justify-between rounded-lg ">
-            <div class="product-counter ">
-              <button class="decrease-btn bg-color-border-gray p-2"><i class="fas fa-minus text-color-font-white"></i></button>
-              <span class="quantity text-color-font-white px-1">1</span>
-              <button class="increase-btn bg-color-border-gray p-2"><i class="fas fa-plus text-color-font-white"></i></button>
-            </div>
-          </div>
+        </div>
       </div>
     </div>
   </main>
 </section>
 
-
+<!-- curl -i -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN5c3RlcnMueHl6IiwiaWF0IjoxNzEzNTQ5NTkxLCJleHAiOjE3MTM1NTMxOTEsInN1YiI6IjEifQ.pZNIiXV2Df6Q7Si8ilkOib6FitJECQ9Vx-rGqq_PBPI" https://burger-queen-api-mock.up.railway.app/products --ssl-no-revoke  -->

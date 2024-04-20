@@ -1,7 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Shared/Services/auth.service';
+import { ProductsService } from 'src/app/Shared/Services/Products/products.service';
+import { Products } from 'src/Models/Produto';
 
 @Component({
   selector: 'app-registrar-pedido',
@@ -20,11 +22,27 @@ import { AuthService } from 'src/app/Shared/Services/auth.service';
   ]
 })
 
-export class RegistrarPedidoComponent {
+export class RegistrarPedidoComponent implements OnInit{
+  product: Products[] = [];
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private productService: ProductsService) {}
+
+  ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  loadProducts(): void {
+    this.productService.listProducts().subscribe(
+      (data: Products[]) => {
+        this.product = data;
+      },
+      error => {
+        console.log('Erro ao carregar produtos: ', error);
+      }
+    )
+  }
 
   deslogar(){
-    this.auth.logout()
+    this.authService.logout()
   }
 }

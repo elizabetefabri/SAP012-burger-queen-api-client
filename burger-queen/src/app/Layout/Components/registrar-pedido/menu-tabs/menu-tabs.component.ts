@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Products } from 'src/Models/Produto';
 
 @Component({
   selector: 'app-menu-tabs',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu-tabs.component.css']
 })
 export class MenuTabsComponent {
-
+  @Input() products: Products[] = [];
 }

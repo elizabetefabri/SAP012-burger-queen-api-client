@@ -21,8 +21,6 @@
         logado
         <!-- icone verde de logado -->
       </span>
-      <!-- Icone de sair -->
-      <!-- Icone de sair -->
       <div class="container__logout">
         <a (click)="deslogar()">
           <i class="text-color-gray-icon fas fa-sign-out-alt"></i>
@@ -31,9 +29,9 @@
     </div>
   </nav>
 </header>
+
 <section class="container__registrar-pedido pr-1 pl-1 bg-color-background-logado min-h-screen flex flex-col">
   <main class="container__main max-w-[1000px] w-full mx-auto mt-5 ">
-
-    <app-menu-tabs></app-menu-tabs>
+    <app-menu-tabs [products]="product"></app-menu-tabs>
   </main>
 </section>
