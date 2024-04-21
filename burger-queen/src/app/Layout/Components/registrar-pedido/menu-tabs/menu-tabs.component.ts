@@ -7,5 +7,8 @@ import { Products } from 'src/Models/Produto';
   styleUrls: ['./menu-tabs.component.css']
 })
 export class MenuTabsComponent {
-  @Input() products: Products[] = [];
+  @Input() beverages: Products[] = [];
+  @Input() lunch: Products[] = [];
+  @Input() breakfast: Products[] = [];
+  @Input() selectedProducts: { product: Products, quantity: number }[] = [];
 }

@@ -1,4 +1,7 @@
 <mat-tab-group color="success">
+  <mat-tab label="Cadastrar Cliente">
+    <app-registrar-cliente></app-registrar-cliente>
+  </mat-tab>
   <mat-tab label="Bebidas">
     <app-cards-pedido type="Beverages"></app-cards-pedido>
   </mat-tab>
@@ -9,6 +12,6 @@
     <app-cards-pedido type="Breakfast"></app-cards-pedido>
   </mat-tab>
   <mat-tab label="Finalizar pedido">
-    <app-finalizar-pedido></app-finalizar-pedido>
+    <app-finalizar-pedido [selectedProducts]="selectedProducts"></app-finalizar-pedido>
   </mat-tab>
 </mat-tab-group>
