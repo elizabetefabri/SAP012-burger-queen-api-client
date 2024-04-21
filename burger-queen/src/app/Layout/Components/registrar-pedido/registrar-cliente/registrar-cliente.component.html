@@ -1,0 +1,36 @@
+
+<section class="container__cadastro pr-1 pl-1  min-h-screen flex flex-col">
+  <main
+    class="content__cadastro  border-t border-x border-color-font-orange flex flex-col justify-center items-center max-w-[1000px] w-full mx-auto py-10 px-4 mt-4 rounded-tl-2xl rounded-tr-2xl">
+    <div class="container__form w-full space-y-4 mb-8 max-w-[800px] ">
+
+      <h3 class="text-color-font-orange text-left mb-3">Cadastre o cliente da <em class="text-white outline-none border-b-2 border-color-font-gray"> Mesa {{ mesaId }}</em></h3>
+      <div class="cadastrarNome">
+        <!-- Campo de entrada para o nome do cliente e botão "Cadastrar" -->
+        <div class="input-button-wrapper">
+          <div class="input-wrapper">
+            <input
+              [(ngModel)]="nomeCliente"
+              type="text"
+              placeholder="Digite o nome do cliente"
+              class="mt-2 p-1 w-full h-[50px] rounded-md text-white bg-transparent outline-none border-r-2 border-l-2 border-t-2 border-b-2 border-color-border-gray">
+          </div>
+
+          <div class="button-wrapper">
+            <button
+              (click)="salvarNomeCliente()"
+              class="p-1 bg-color-font-orange text-white rounded-md border-b-2 border-color-font-orange w-[100px] h-[50px]">
+              Cadastrar
+            </button>
+          </div>
+        </div>
+        <div
+          *ngIf="nomeCliente"
+          class="w-20 p-1 text-1xl text-white">
+          {{ nomeCliente }}
+        </div>
+
+      </div>
+    </div>
+  </main>
+</section>
