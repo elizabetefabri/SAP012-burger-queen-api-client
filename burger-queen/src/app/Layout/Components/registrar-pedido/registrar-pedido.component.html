@@ -1,9 +1,9 @@
+<!-- PAGINA DO COMPONENTE REGISTRAR -->
 <header class="container__header bg-color-header text-color-font-white">
   <nav class="container__nav max-w-[1000px] w-full mx-auto flex justify-between items-center ">
     <div class="content__nav-logo flex items-center mt-8 mb-4">
       <div class="flex flex-col">
-        <span class="w-20 border border-color-font-orange rounded-lg p-1">Mesa 01</span>
-        <h3 class="text-2xl mt-1">Nome do Cliente</h3>
+
         <a [routerLink]="['/registrar-mesa']" class="flex items-center text-color-font-white">
           <i class="fas fa-arrow-left mr-2 text-color-font-white"></i>
           Voltar
@@ -14,16 +14,16 @@
     <div class="content__nav-usuario-logado flex flex-col items-end">
       <p class="container_p text-xl">
         <!-- Aqui vai inserir a variável do usuário logado -->
-        Funcionário
+        {{usuarioLogado}}
       </p>
       <span class="logado text-color-font-gray">
         <!-- Aqui vai verificar se o usuário está logado e trazer a informação -->
-        logado
+        <!-- 🟢 -->
         <!-- icone verde de logado -->
       </span>
       <div class="container__logout">
         <a (click)="deslogar()">
-          <i class="text-color-gray-icon fas fa-sign-out-alt"></i>
+          <i class="text-color-gray-icon fas fa-sign-out-alt close"></i>
         </a>
       </div>
     </div>
@@ -32,6 +32,12 @@
 
 <section class="container__registrar-pedido pr-1 pl-1 bg-color-background-logado min-h-screen flex flex-col">
   <main class="container__main max-w-[1000px] w-full mx-auto mt-5 ">
-    <app-menu-tabs [products]="product"></app-menu-tabs>
+    <app-menu-tabs
+    [beverages]="beverages"
+    [lunch]="lunch"
+    [breakfast]="breakfast"
+    [selectedProducts]="selectedProducts"
+    >
+</app-menu-tabs>
   </main>
 </section>
