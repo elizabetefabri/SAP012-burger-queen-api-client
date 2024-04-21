@@ -17,6 +17,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { CardsPedidoComponent } from './Layout/Components/registrar-pedido/cards-pedido/cards-pedido.component';
 import { MenuTabsComponent } from './Layout/Components/registrar-pedido/menu-tabs/menu-tabs.component';
 import { FinalizarPedidoComponent } from './Layout/Components/registrar-pedido/finalizar-pedido/finalizar-pedido.component';
+import { RegistrarClienteComponent } from './Layout/Components/registrar-pedido/registrar-cliente/registrar-cliente.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FinalizarPedidoComponent } from './Layout/Components/registrar-pedido/f
     RegistrarPedidoComponent,
     CardsPedidoComponent,
     MenuTabsComponent,
-    FinalizarPedidoComponent
+    FinalizarPedidoComponent,
+    RegistrarClienteComponent
   ],
   imports: [
     BrowserModule,
