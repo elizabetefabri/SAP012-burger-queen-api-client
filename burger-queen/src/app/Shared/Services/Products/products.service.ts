@@ -12,12 +12,22 @@ import { formatProducts } from 'src/Utils/transforms';
 export class ProductsService {
 
   private readonly apiUrl: string = environment.API_URL;
+  // Método para criar os cabeçalhos de autorização
+  private solicitarAuthorizationHeader(): HttpHeaders {
+    const token = localStorage.getItem('token') ?? '';
+    return new HttpHeaders({
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  }
 
   constructor(private http: HttpClient) {}
 
    // Método para listar todos os produtos
    listProducts(): Observable<Products[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/products`).pipe(
+    const headers = this.solicitarAuthorizationHeader();
+    return this.http.get<any[]>(`${this.apiUrl}/products`, { headers }).pipe(
       map(data => data.map(apiData => formatProducts(apiData))),
       catchError(this.handleError)
     );
@@ -38,15 +48,7 @@ export class ProductsService {
     );
   }
 
-  // Método para criar os cabeçalhos de autorização
-  private solicitarAuthorizationHeader(): HttpHeaders {
-    const token = localStorage.getItem('token') ?? '';
-    return new HttpHeaders({
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-  }
+
 
   // Método para lidar com erros
   private handleError(error: any): Observable<never> {
