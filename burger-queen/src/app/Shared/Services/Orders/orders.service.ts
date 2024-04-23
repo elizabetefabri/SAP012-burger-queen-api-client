@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
+
 import { Order } from 'src/Models/Order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
-  private readonly apiUrl: string = environment.API_URL;
+  private readonly apiUrl = "https://burger-queen-api-mock.up.railway.app";
 
   constructor(private http: HttpClient) { }
 

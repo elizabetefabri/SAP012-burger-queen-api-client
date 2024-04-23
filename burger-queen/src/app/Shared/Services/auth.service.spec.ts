@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AuthService } from './auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { environment } from 'src/environments/environment.development';
+
 import { Router } from '@angular/router';
 import { RegistrarMesaComponent } from 'src/app/Layout/Components/registrar-mesa/registrar-mesa.component';
 import { LoginComponent } from 'src/app/Layout/Components/login/login.component';
@@ -54,7 +54,7 @@ describe('AuthService', () => {
     };
 
     service.login('test@example.com', 'password');
-    const req = httpMock.expectOne(`${environment.API_URL}/login`);
+    const req = httpMock.expectOne(`https://burger-queen-api-mock.up.railway.app/login`);
     expect(req.request.method).toBe('POST');
     req.flush(mockResponse);
 
@@ -68,7 +68,7 @@ describe('AuthService', () => {
     });
 
     service.login('test@example.com', 'password');
-    const req = httpMock.expectOne(`${environment.API_URL}/login`);
+    const req = httpMock.expectOne(`https://burger-queen-api-mock.up.railway.app/login`);
     req.error(mockError);
 
     expect(localStorage.setItem).not.toHaveBeenCalled();
