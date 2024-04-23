@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment.development';
+
 import { Products } from 'src/Models/Produto';
 import { formatProducts } from 'src/Utils/transforms';
 import { AuthService } from '../auth.service';
@@ -12,15 +12,23 @@ import { AuthService } from '../auth.service';
 })
 export class ProductsService {
 
-  private readonly apiUrl: string = environment.API_URL;
+  private readonly apiUrl = "https://burger-queen-api-mock.up.railway.app";
+
+  // Método para criar os cabeçalhos de autorização
+  private solicitarAuthorizationHeader(): HttpHeaders {
+    const token = localStorage.getItem('token') ?? '';
+    return new HttpHeaders({
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  }
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
    // Método para listar todos os produtos
    listProducts(): Observable<Products[]> {
-    const headers = this.solicitarAuthorizationHeader();
-
-    return this.http.get<any[]>(`${this.apiUrl}/products`, { headers }).pipe(
+    return this.http.get<any[]>(`${this.apiUrl}/products`).pipe(
       map(data => data.map(apiData => formatProducts(apiData))),
       catchError(this.handleError)
     );
@@ -39,16 +47,6 @@ export class ProductsService {
       map(apiData => formatProducts(apiData)),
       catchError(this.handleError)
     );
-  }
-
-  // Método para criar os cabeçalhos de autorização
-  private solicitarAuthorizationHeader(): HttpHeaders {
-    const token = localStorage.getItem('token') ?? '';
-    return new HttpHeaders({
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
   }
 
   // Método para lidar com erros

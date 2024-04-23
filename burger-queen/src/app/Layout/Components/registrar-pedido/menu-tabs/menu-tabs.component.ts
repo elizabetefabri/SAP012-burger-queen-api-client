@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Products } from 'src/Models/Produto';
 
 @Component({
@@ -7,5 +7,16 @@ import { Products } from 'src/Models/Produto';
   styleUrls: ['./menu-tabs.component.css']
 })
 export class MenuTabsComponent {
-  @Input() products: Products[] = [];
+  @Input() beverages: Products[] = [];
+  @Input() lunch: Products[] = [];
+  @Input() breakfast: Products[] = [];
+  // @Input() selectedProducts: { product: Products, quantity: number }[] = [];
+  @Output() totalEmit: EventEmitter<{price: number, isSum: boolean}> = new EventEmitter<{price: number, isSum: boolean}>();
+
+  registraTotal(event: {price: number, isSum: boolean}){
+    console.log(event)
+    this.totalEmit.emit(event)
+  }
+
+
 }

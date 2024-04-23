@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Shared/Services/auth.service';
 import { ProductsService } from 'src/app/Shared/Services/Products/products.service';
 import { Products } from 'src/Models/Produto';
@@ -24,11 +24,21 @@ import { Products } from 'src/Models/Produto';
 
 export class RegistrarPedidoComponent implements OnInit{
   product: Products[] = [];
+  mesaId: string = '';
+  nomeCliente: string = '';
+  usuarioLogado: string = '';
 
-  constructor(private authService: AuthService, private productService: ProductsService) {}
+  beverages: Products[] = [];
+  lunch: Products[] = [];
+  breakfast: Products[] = [];
+
+  totalPedido: number = 0;
+
+  constructor(private authService: AuthService, private productService: ProductsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.loadProducts();
+    // this.getUsuarioLogado();
   }
 
   loadProducts(): void {
@@ -37,10 +47,34 @@ export class RegistrarPedidoComponent implements OnInit{
         this.product = data;
       },
       error: (error) => {
+<<<<<<< HEAD
         console.log('Erro ao processar a solicitação:', error);
+=======
+        console.log('Erro ao carregar produtos: ', error);
+>>>>>>> T002-pagina-registro-mesa
       }
     });
   }
+
+  atualizarTotal(event: {price: number, isSum: boolean}): void{
+    console.log(event);
+    if(event.isSum){
+      this.totalPedido += event.price;
+    } else {
+      this.totalPedido -= event.price;
+    }
+  }
+
+
+  // getUsuarioLogado(): void {
+  //   this.authService.getCurrentUser().subscribe(user => {
+  //     if (user) {
+  //       this.usuarioLogado = user.role; // Atribui o papel do usuário logado
+  //     } else {
+  //       this.usuarioLogado = 'Usuário não logado'; // Define um valor padrão se nenhum usuário estiver logado
+  //     }
+  //   });
+  // }
 
   deslogar(){
     this.authService.logout()

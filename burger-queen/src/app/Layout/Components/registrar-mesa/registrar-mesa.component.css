@@ -9,6 +9,6 @@ i:hover {
   transform: scale(1.02);
   opacity: 1;
 }
-i{
-  font-size: 20px;
+.close {
+  font-size: 24px;
 }
