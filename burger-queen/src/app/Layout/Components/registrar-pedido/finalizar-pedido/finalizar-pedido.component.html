@@ -2,8 +2,33 @@
 <section class="container__registra-produtos pr-1 pl-1 bg-color-background-logado min-h-screen ">
   <div class="container__main max-w-[1000px] w-full h-[500px] bg-color-main border-2 border-color-border-gray rounded-lg ">
     <div class="container_texto text-left p-5">
+      <section class="nomeCliente">
+        <h2
+        *ngIf="nomeCliente"
+        class="text-color-font-orange text-left mb-3">
+        {{ nomeCliente }}
+        <em class="text-white outline-none border-b-2 border-color-font-gray">
+          Mesa {{ mesaId }}
+        </em>
+      </h2>
+      <div class="input-button-wrapper">
+        <div class="input-wrapper">
+          <input
+            [(ngModel)]="nomeCliente"
+            type="text"
+            placeholder="Digite o nome do cliente"
+            class="mt-2 p-1 w-full h-[50px] rounded-md text-white bg-transparent outline-none border-r-2 border-l-2 border-t-2 border-b-2 border-color-border-gray">
+        </div>
 
-      <h2 class="text-color-font-orange text-left  border-b-2 border-color-border-gray mb-5">Nome do Cliente <em class="text-white outline-none border-b-2 border-color-font-orange"> Mesa {{ mesaId }}</em></h2>
+        <div class="button-wrapper">
+          <button
+            class="p-1 bg-color-font-orange text-white rounded-md border-b-2 border-color-font-orange w-[100px] h-[50px]">
+            Cadastrar
+          </button>
+        </div>
+      </div>
+      </section>
+
       <div >
         <div *ngFor="let item of selectedProducts; let i = index" class="container__produto mb-4">
           <h3 class="text-color-font-white text-xl">

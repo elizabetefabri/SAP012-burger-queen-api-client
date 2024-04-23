@@ -12,6 +12,7 @@ import { Products } from 'src/Models/Produto';
 
 export class FinalizarPedidoComponent implements OnInit{
   @Input() selectedProducts: { product: Products, quantity: number }[] = [];
+  nomeCliente: string = '';
   mesaId: string = '';
 
   constructor(private authService: AuthService, private productService: ProductsService, private route: ActivatedRoute) {}
