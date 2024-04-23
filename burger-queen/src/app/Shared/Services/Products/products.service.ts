@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment.development';
+
 import { Products } from 'src/Models/Produto';
 import { formatProducts } from 'src/Utils/transforms';
 
@@ -11,7 +11,8 @@ import { formatProducts } from 'src/Utils/transforms';
 })
 export class ProductsService {
 
-  private readonly apiUrl: string = environment.API_URL;
+  private readonly apiUrl = "https://burger-queen-api-mock.up.railway.app";
+
   // Método para criar os cabeçalhos de autorização
   private solicitarAuthorizationHeader(): HttpHeaders {
     const token = localStorage.getItem('token') ?? '';
@@ -47,8 +48,6 @@ export class ProductsService {
       catchError(this.handleError)
     );
   }
-
-
 
   // Método para lidar com erros
   private handleError(error: any): Observable<never> {

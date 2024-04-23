@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment.development';
+
 import { Login } from 'src/Models/Login';
 import { User } from 'src/Models/Usuario';
 
@@ -11,7 +11,7 @@ import { User } from 'src/Models/Usuario';
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly apiUrl = environment.API_URL;
+  private readonly apiUrl = "https://burger-queen-api-mock.up.railway.app";
   private currentUser: BehaviorSubject<Login | null> = new BehaviorSubject<Login | null>(null);
 
   constructor(private http: HttpClient, private router: Router) {
