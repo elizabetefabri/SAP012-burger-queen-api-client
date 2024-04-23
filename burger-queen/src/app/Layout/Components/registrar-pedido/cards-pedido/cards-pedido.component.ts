@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProductsService } from 'src/app/Shared/Services/Products/products.service';
 import { Products } from 'src/Models/Produto';
 
@@ -10,19 +10,26 @@ import { Products } from 'src/Models/Produto';
 export class CardsPedidoComponent implements OnInit{
   @Input() type: string = '';
   @Input() products: Products[] = [];
-  // @Input() beverages: Products[] = [];
-  // @Input() lunch: Products[] = [];
-  // @Input() breakfast: Products[] = [];
   @Input() selectedProducts: { product: Products, quantity: number }[] = [];
 
-  total: number = 0;
+  @Output() totalEmmiter: EventEmitter<{price: number, isSum: boolean}> = new EventEmitter<{price: number, isSum: boolean}>();
 
-  // selectedProducts: { product: Products, quantity: number }[] = [];
+  total: number = 0;
+  price: number = 0;
+  isSum: boolean = false;
 
   constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
     this.loadProducts();
+  }
+
+  atualizarTotal(){
+    this.totalEmmiter.emit({
+      price: this.price,
+      isSum: this.isSum
+    });
+
   }
 
   loadProducts(){
@@ -41,9 +48,14 @@ export class CardsPedidoComponent implements OnInit{
     const index = this.selectedProducts.findIndex(item => item.product === product);
     if (index !== -1) {
       this.selectedProducts[index].quantity++;
+      this.price = this.selectedProducts[index].product.price;
     } else {
       this.selectedProducts.push({ product, quantity: 1 });
+      this.price = product.price;
     }
+    console.log(this.selectedProducts)
+    this.isSum = true;
+
     this.calculateTotal();
   }
 
@@ -52,11 +64,14 @@ export class CardsPedidoComponent implements OnInit{
     if (index !== -1) {
       if (this.selectedProducts[index].quantity > 1) {
         this.selectedProducts[index].quantity--;
+        this.price = this.selectedProducts[index].product.price;
       } else {
         this.selectedProducts.splice(index, 1);
+        this.price = product.price;
       }
+      this.isSum = false;
+      this.calculateTotal();
     }
-    this.calculateTotal();
   }
 
   getQuantity(product: Products): number {
@@ -66,6 +81,7 @@ export class CardsPedidoComponent implements OnInit{
 
   calculateTotal(): void {
     this.total = this.selectedProducts.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+    this.atualizarTotal();
   }
 }
 
