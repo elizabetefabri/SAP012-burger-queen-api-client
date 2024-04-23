@@ -47,11 +47,11 @@ export class RegistrarPedidoComponent implements OnInit{
         this.product = data;
       },
       error: (error) => {
-<<<<<<< HEAD
+
         console.log('Erro ao processar a solicitação:', error);
-=======
+
         console.log('Erro ao carregar produtos: ', error);
->>>>>>> T002-pagina-registro-mesa
+
       }
     });
   }
