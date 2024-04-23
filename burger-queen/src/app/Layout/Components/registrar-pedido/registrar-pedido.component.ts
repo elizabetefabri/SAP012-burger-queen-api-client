@@ -32,7 +32,7 @@ export class RegistrarPedidoComponent implements OnInit{
   lunch: Products[] = [];
   breakfast: Products[] = [];
 
-  selectedProducts: { product: Products, quantity: number }[] = [];
+  totalPedido: number = 0;
 
   constructor(private authService: AuthService, private productService: ProductsService, private route: ActivatedRoute) {}
 
@@ -51,6 +51,16 @@ export class RegistrarPedidoComponent implements OnInit{
       }
     });
   }
+
+  atualizarTotal(event: {price: number, isSum: boolean}): void{
+    console.log(event);
+    if(event.isSum){
+      this.totalPedido += event.price;
+    } else {
+      this.totalPedido -= event.price;
+    }
+  }
+
 
   // getUsuarioLogado(): void {
   //   this.authService.getCurrentUser().subscribe(user => {
