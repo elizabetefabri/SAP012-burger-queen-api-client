@@ -12,7 +12,7 @@ h3{
   cursor: pointer; /* Garante que o cursor seja uma "mãozinha" */
 }
 
-input, select, a{
+button, input, select, a{
   border-radius: 5px;
 }
 
