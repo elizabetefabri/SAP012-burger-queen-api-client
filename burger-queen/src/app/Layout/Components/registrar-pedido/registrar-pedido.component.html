@@ -1,51 +1,15 @@
 <!-- PAGINA DO COMPONENTE REGISTRAR -->
-<header class="container__header bg-color-header text-color-font-white">
-  <nav class="container__nav max-w-[1000px] w-full mx-auto flex justify-between items-center ">
-    <div class="content__nav-logo flex items-center mt-8 mb-4">
-      <div class="flex flex-col">
+<app-header></app-header>
 
-        <a [routerLink]="['/registrar-mesa']" class="flex items-center text-color-font-white">
-          <i class="fas fa-arrow-left mr-2 text-color-font-white"></i>
-          Voltar
-        </a>
-      </div>
-    </div>
-
-    <div class="content__nav-usuario-logado flex flex-col items-end">
-      <p class="container_p text-xl">
-        <!-- Aqui vai inserir a variável do usuário logado -->
-        {{usuarioLogado}}
-      </p>
-      <span class="logado text-color-font-gray">
-        <!-- Aqui vai verificar se o usuário está logado e trazer a informação -->
-        <!-- 🟢 -->
-        <!-- icone verde de logado -->
-      </span>
-      <div class="container__logout">
-        <a (click)="deslogar()">
-          <i class="text-color-gray-icon fas fa-sign-out-alt close"></i>
-        </a>
-      </div>
-    </div>
-  </nav>
-</header>
-
-<section class="container__registrar-pedido pr-1 pl-1 bg-color-background-logado  flex flex-col">
+<section class="container__registrar-pedido pr-1 pl-1 bg-color-background-logado flex flex-col ">
   <main class="container__main max-w-[1000px] w-full mx-auto mt-5 ">
     <app-menu-tabs
     [beverages]="beverages"
     [lunch]="lunch"
     [breakfast]="breakfast"
     (totalEmit)="atualizarTotal($event)">
-
     </app-menu-tabs>
   </main>
-  <!-- COMPONENTE DEMOSTRATIVO DE TOTALIZAR O PEDIDO -->
-<div class="container__total max-w-[1000px] w-full mx-auto bg-color-background-logado ">
-  <div class=" bg-color-main border-2 border-color-border-gray rounded-lg text-white">
-    <app-total-pedido [totalPedido]="totalPedido"></app-total-pedido>
-  </div>
-</div>
 </section>
-
-
+<!-- COMPONENTE DEMOSTRATIVO DE TOTALIZAR O PEDIDO -->
+<app-total-pedido [totalPedido]="totalPedido"></app-total-pedido>
