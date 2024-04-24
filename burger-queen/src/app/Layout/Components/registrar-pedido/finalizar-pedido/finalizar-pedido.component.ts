@@ -14,6 +14,7 @@ export class FinalizarPedidoComponent implements OnInit{
   @Input() selectedProducts: { product: Products, quantity: number }[] = [];
   nomeCliente: string = '';
   @Input() mesaId: string = '';
+  showInput: boolean = true;
 
   constructor(private authService: AuthService, private productService: ProductsService, private route: ActivatedRoute) {}
   ngOnInit(): void {
@@ -32,5 +33,11 @@ export class FinalizarPedidoComponent implements OnInit{
 
   removeItem(index: number): void {
     this.selectedProducts.splice(index, 1);
+  }
+
+  registerNameCliente(): void {
+    if (this.nomeCliente.trim() !== '') {
+      this.showInput = false; // Esconde apenas o input e o botão se um nome foi fornecido
+    }
   }
 }
