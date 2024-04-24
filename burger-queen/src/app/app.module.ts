@@ -18,6 +18,7 @@ import { CardsPedidoComponent } from './Layout/Components/registrar-pedido/cards
 import { MenuTabsComponent } from './Layout/Components/registrar-pedido/menu-tabs/menu-tabs.component';
 import { FinalizarPedidoComponent } from './Layout/Components/registrar-pedido/finalizar-pedido/finalizar-pedido.component';
 import { TotalPedidoComponent } from './Layout/Components/registrar-pedido/total-pedido/total-pedido.component';
+import { HeaderComponent } from './Layout/Components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TotalPedidoComponent } from './Layout/Components/registrar-pedido/total
     CardsPedidoComponent,
     MenuTabsComponent,
     FinalizarPedidoComponent,
-    TotalPedidoComponent
+    TotalPedidoComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
