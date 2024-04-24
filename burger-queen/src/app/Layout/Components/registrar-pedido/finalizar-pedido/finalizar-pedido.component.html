@@ -1,52 +1,29 @@
-<!-- PAGINA DO COMPONENT DE FINALIZAR PEDIDO -->
-<section class="container__registra-produtos pr-1 pl-1 bg-color-background-logado min-h-screen ">
-  <div class="container__main max-w-[1000px] w-full h-[500px] bg-color-main border-2 border-color-border-gray rounded-lg ">
+<section class="container__registra-produtos pr-1 pl-1 pb-5 bg-color-background-logado">
+  <div
+    class="container__main max-w-[1000px] w-full h-[500px] bg-color-main border-2 border-color-border-gray rounded-lg">
     <div class="container_texto text-left p-5">
       <section class="nomeCliente">
-        <h2
-        *ngIf="nomeCliente"
-        class="text-color-font-orange text-left mb-3">
-        {{ nomeCliente }}
-        <em class="text-white outline-none border-b-2 border-color-font-gray">
-          Mesa {{ mesaId }}
-        </em>
-      </h2>
-      <div class="input-button-wrapper">
-        <div class="input-wrapper">
-          <input
-            [(ngModel)]="nomeCliente"
-            type="text"
-            placeholder="Digite o nome do cliente"
-            class="mt-2 p-1 w-full h-[50px] rounded-md text-white bg-transparent outline-none border-r-2 border-l-2 border-t-2 border-b-2 border-color-border-gray">
-        </div>
-
-        <div class="button-wrapper">
-          <button
-            class="p-1 bg-color-font-orange text-white rounded-md border-b-2 border-color-font-orange w-[100px] h-[50px]">
+        <h2 *ngIf="nomeCliente && !showInput" class="text-color-font-orange text-left mb-3">
+          Cliente: {{ nomeCliente }}
+          <em class="text-white outline-none border-b-2 border-color-font-gray">Mesa {{ mesaId }}</em>
+        </h2>
+        <div class="flex justify-between items-center" *ngIf="showInput">
+          <input [(ngModel)]="nomeCliente" type="text" placeholder="Digite o nome do cliente"
+            class="p-1 w-full max-w-[80%] h-[50px] rounded-l-md text-white bg-transparent border-2 border-color-border-gray focus:outline-none">
+          <button (click)="registerNameCliente()"
+            class="p-1 bg-color-font-orange text-white rounded-r-md border-2 border-color-font-orange h-[50px] w-[20%]">
             Cadastrar
           </button>
         </div>
-      </div>
       </section>
 
-      <div >
-        <div *ngFor="let item of selectedProducts; let i = index" class="container__produto mb-4">
-          <h3 class="text-color-font-white text-xl">
-            {{ item.product.name }}: R$ {{ item.product.price }} x {{ item.quantity }}
-            <button (click)="removeItem(i)" class="excluir-btn bg-color-border-gray p-2 rounded-lg ml-4">
-              <i class="fas fa-trash text-color-font-white"></i>
-            </button>
-          </h3>
-        </div>
+      <div class="container__total">
 
-        <div class="container__total">
-          <h3 class="text-color-font-white">Total: R$ {{ getTotal() }}</h3>
-          <a href="/" class="btn btnFinalizar text-xl text-color-font-white text-center bg-color-background p-2 hover:bg-color-background-logado hover:text-color-font-white block">Finalizar pagamento</a>
-        </div>
+        <a href="/"
+          class="btn btnFinalizar text-xl text-color-font-white text-center bg-color-background p-2 hover:bg-color-background-logado hover:text-color-font-white block">
+          Finalizar pedido
+        </a>
       </div>
-
     </div>
   </div>
 </section>
-
-
