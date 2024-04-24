@@ -24,9 +24,6 @@ import { Products } from 'src/Models/Produto';
 
 export class RegistrarPedidoComponent implements OnInit{
   product: Products[] = [];
-  mesaId: string = '';
-  nomeCliente: string = '';
-  usuarioLogado: string = '';
 
   beverages: Products[] = [];
   lunch: Products[] = [];
@@ -63,20 +60,5 @@ export class RegistrarPedidoComponent implements OnInit{
     } else {
       this.totalPedido -= event.price;
     }
-  }
-
-
-  // getUsuarioLogado(): void {
-  //   this.authService.getCurrentUser().subscribe(user => {
-  //     if (user) {
-  //       this.usuarioLogado = user.role; // Atribui o papel do usuário logado
-  //     } else {
-  //       this.usuarioLogado = 'Usuário não logado'; // Define um valor padrão se nenhum usuário estiver logado
-  //     }
-  //   });
-  // }
-
-  deslogar(){
-    this.authService.logout()
   }
 }
