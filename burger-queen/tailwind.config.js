@@ -13,6 +13,7 @@ module.exports = {
         "color-background": "#191919 ",
         "color-background-logado": "#1e1e1e",
         "color-border-gray": "#333333",
+        "color-btn": "#373737",
         "color-font-gray": "#575151",
         "color-gray-icon": "#919191",
         "color-main": "#262626",
