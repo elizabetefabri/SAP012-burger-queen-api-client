@@ -12,11 +12,13 @@ import { Products } from 'src/Models/Produto';
 
 export class FinalizarPedidoComponent implements OnInit{
   @Input() selectedProducts: { product: Products, quantity: number }[] = [];
-  nomeCliente: string = '';
+  @Input() totalPedido: number = 0;
   @Input() mesaId: string = '';
-  showInput: boolean = true;
+  nomeCliente: string = '';
+  nomeCadastrado: string = '';
 
   constructor(private authService: AuthService, private productService: ProductsService, private route: ActivatedRoute) {}
+
   ngOnInit(): void {
     this.getMesaIdFromUrl();
   }
@@ -27,17 +29,10 @@ export class FinalizarPedidoComponent implements OnInit{
     });
   }
 
-  getTotal(): number {
-    return this.selectedProducts.reduce((total, item) => total + (item.product.price * item.quantity), 0);
-  }
-
-  removeItem(index: number): void {
-    this.selectedProducts.splice(index, 1);
-  }
-
   registerNameCliente(): void {
     if (this.nomeCliente.trim() !== '') {
-      this.showInput = false; // Esconde apenas o input e o botão se um nome foi fornecido
+      this.nomeCadastrado = this.nomeCliente;
+      this.nomeCliente = '';
     }
   }
 }

@@ -1,29 +1,48 @@
-<section class="container__registra-produtos pr-1 pl-1 pb-5 bg-color-background-logado">
-  <div
-    class="container__main max-w-[1000px] w-full h-[500px] bg-color-main border-2 border-color-border-gray rounded-lg">
-    <div class="container_texto text-left p-5">
+<main class="container__registra-produtos pr-1 pl-1 flex flex-col">
+  <div class="container__main max-w-[1000px] w-full border-2 border-color-border-gray rounded-lg flex flex-col justify-between">
+    <header class="container_texto text-left p-5 flex-1">
       <section class="nomeCliente">
-        <h2 *ngIf="nomeCliente && !showInput" class="text-color-font-orange text-left mb-3">
-          Cliente: {{ nomeCliente }}
-          <em class="text-white outline-none border-b-2 border-color-font-gray">Mesa {{ mesaId }}</em>
+        <h2 class="text-white text-left mb-3 flex justify-between items-center border-b-2 border-color-border-gray">
+          Cliente: {{ nomeCadastrado || '...' }}
+          <em class="text-color-font-gray outline-none">Mesa {{ mesaId }}</em>
         </h2>
-        <div class="flex justify-between items-center" *ngIf="showInput">
+      </section>
+    </header>
+
+  <div class="pl-5 pr-5 text-white flex items-center justify-between">
+    <div class="flex items-center">
+      <h3 class="flex items-center m-0">
+        Nome do produto
+      </h3>
+      <mat-icon aria-hidden="false" fontIcon="fiber_manual_record" class="matIconEdit text-color-font-orange text-xs mx-2"></mat-icon>
+      <h4 class="m-0">R$500</h4>
+    </div>
+    <!-- Ícone de deletar -->
+    <div class="items-center rounded-3xl border border-color-font-orange">
+      <mat-icon aria-hidden="false" fontIcon="delete" class="matIconEdit text-2xl"></mat-icon>
+    </div>
+  </div>
+
+
+    <!-- Grupo de Input, Botão Cadastrar e Total com Grid -->
+    <footer class="grid-area p-5" style="display: grid; grid-template-rows: 1fr auto; grid-template-columns: 1fr; gap: 10px;">
+      <section class="w-full">
+        <app-total-pedido [totalPedido]="totalPedido" class="text-white w-full text-sm"></app-total-pedido>
+      </section>
+      <div class="w-full" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+        <div class="container_cadastrar" style="display: flex; align-items: center;">
           <input [(ngModel)]="nomeCliente" type="text" placeholder="Digite o nome do cliente"
-            class="p-1 w-full max-w-[80%] h-[50px] rounded-l-md text-white bg-transparent border-2 border-color-border-gray focus:outline-none">
+            class="p-1 h-[50px] bg-transparent text-white border-2 border-color-border-gray focus:outline-none flex-grow rounded-l-md rounded-r-none">
           <button (click)="registerNameCliente()"
-            class="p-1 bg-color-font-orange text-white rounded-r-md border-2 border-color-font-orange h-[50px] w-[20%]">
+            class="p-1 text-white text-xl bg-color-btn hover:bg-color-main w-[150px] h-[50px] rounded-r-md rounded-l-none">
             Cadastrar
           </button>
         </div>
-      </section>
-
-      <div class="container__total">
-
         <a href="/"
-          class="btn btnFinalizar text-xl text-color-font-white text-center bg-color-background p-2 hover:bg-color-background-logado hover:text-color-font-white block">
-          Finalizar pedido
+          class="btn text-xl h-[52px] text-color-font-white text-center border border-color-border-gray bg-color-btn hover:bg-color-main p-3 hover:text-color-font-white w-full rounded">
+          Enviar pedido
         </a>
       </div>
-    </div>
+    </footer>
   </div>
-</section>
+</main>
