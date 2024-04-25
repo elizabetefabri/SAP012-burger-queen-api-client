@@ -53,9 +53,9 @@ export class CardsPedidoComponent implements OnInit{
       this.selectedProducts.push({ product, quantity: 1 });
       this.price = product.price;
     }
-    console.log(this.selectedProducts)
-    this.isSum = true;
 
+    this.isSum = true;
+    this.totalEmmiter.emit({price: product.price, isSum: true});
     this.calculateTotal();
   }
 
