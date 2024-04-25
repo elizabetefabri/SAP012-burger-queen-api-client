@@ -55,7 +55,7 @@ export class CardsPedidoComponent implements OnInit{
     }
 
     this.isSum = true;
-    this.totalEmmiter.emit({price: product.price, isSum: true});
+
     this.calculateTotal();
   }
 
@@ -70,6 +70,7 @@ export class CardsPedidoComponent implements OnInit{
         this.price = product.price;
       }
       this.isSum = false;
+
       this.calculateTotal();
     }
   }
