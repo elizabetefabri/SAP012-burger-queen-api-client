@@ -1,50 +1,72 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, of, Subscription } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
-import { Login } from 'src/Models/Login';
+import { formatProducts } from 'src/Utils/transforms';
 import { User } from 'src/Models/Usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly apiUrl = "https://burger-queen-api-mock.up.railway.app";
-  private currentUser: BehaviorSubject<Login | null> = new BehaviorSubject<Login | null>(null);
+  private readonly apiUrl: string = 'https://burger-queen-api-mock.up.railway.app';
+  private currentUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient, private router: Router) {
-    // this.checkAuthentication();
-  }
+  constructor(private http: HttpClient, private router: Router) { }
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
   }
 
-  getUserInfo(): Observable<Login | null> {
+  getUserInfo(): Observable<User | null> {
     return this.currentUser.asObservable();
   }
 
-  login(email: string, password: string): Subscription {
-    return this.http.post<any>(`${this.apiUrl}/login`, { email, password }).subscribe({
-      next: (response) => {
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap(response => {
         localStorage.setItem('token', response.accessToken);
-        this.router.navigate(['/registrar-mesa']);
-        // this.getCurrentUser().subscribe();
-      },
-      error: (error) => {
-        console.error('Erro de autenticação:', error);
+        this.currentUser.next(response.user);
+        this.router.navigate(['/dashboard']);
+      }),
+      catchError(error => {
         alert('Email ou senha incorretos.');
-      }
-    });
+        throw error;
+      })
+    );
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
     this.currentUser.next(null);
   }
 
+  registerUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/users`, user, this.getHttpOptions()).pipe(
+      tap(newUser => console.log(`Registered user ${newUser.id}`)),
+      catchError(error => {
+        console.error('Registration failed:', error);
+        throw error;
+      })
+    );
+  }
+  updateUser(id: string, user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/users/${id}`, user, this.getHttpOptions());
+  }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/users/${id}`, this.getHttpOptions());
+  }
+
+  private getHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      })
+    };
+  }
 
 }
