@@ -1,4 +1,10 @@
+.delt{
+  cursor: pointer;
+}
 a.btn{
   border-radius: 5px;
 }
-
+.delt:hover {
+  transform: scale(1.06);
+  opacity: 1;
+}

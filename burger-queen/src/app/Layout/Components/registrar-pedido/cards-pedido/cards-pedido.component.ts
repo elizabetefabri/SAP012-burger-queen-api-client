@@ -12,11 +12,12 @@ export class CardsPedidoComponent implements OnInit{
   @Input() products: Products[] = [];
   @Input() selectedProducts: { product: Products, quantity: number }[] = [];
 
-  @Output() totalEmmiter: EventEmitter<{price: number, isSum: boolean}> = new EventEmitter<{price: number, isSum: boolean}>();
+  @Output() totalEmmiter: EventEmitter<{products: { product: Products, quantity: number }[], index: number, isSum: boolean}> = new EventEmitter<{products: { product: Products, quantity: number }[], index: number, isSum: boolean}>();
 
   total: number = 0;
   price: number = 0;
   isSum: boolean = false;
+  index: number = 0;
 
   constructor(private productService: ProductsService) {}
 
@@ -26,7 +27,8 @@ export class CardsPedidoComponent implements OnInit{
 
   atualizarTotal(){
     this.totalEmmiter.emit({
-      price: this.price,
+      products: this.selectedProducts,
+      index: this.index,
       isSum: this.isSum
     });
 
@@ -35,7 +37,7 @@ export class CardsPedidoComponent implements OnInit{
   loadProducts(){
     this.productService.listProductsByType(this.type).subscribe({
       next: (data: Products[]) => {
-        console.log(this.type, data);
+        // console.log(this.type, data);
         this.products = data;
       },
       error: (error) => {
@@ -45,13 +47,14 @@ export class CardsPedidoComponent implements OnInit{
   }
 
   addToAnottation(product: Products): void {
-    const index = this.selectedProducts.findIndex(item => item.product === product);
-    if (index !== -1) {
-      this.selectedProducts[index].quantity++;
-      this.price = this.selectedProducts[index].product.price;
+    this.index = this.selectedProducts.findIndex(item => item.product === product);
+    if (this.index !== -1) {
+      this.selectedProducts[this.index].quantity++;
+      // this.price = this.selectedProducts[this.index].product.price;
     } else {
       this.selectedProducts.push({ product, quantity: 1 });
-      this.price = product.price;
+      // this.price = product.price;
+      this.index = this.selectedProducts.length -1;
     }
 
     this.isSum = true;
@@ -60,20 +63,21 @@ export class CardsPedidoComponent implements OnInit{
   }
 
   removeFromAnottation(product: Products): void {
-    const index = this.selectedProducts.findIndex(item => item.product === product);
-    if (index !== -1) {
-      if (this.selectedProducts[index].quantity > 1) {
-        this.selectedProducts[index].quantity--;
-        this.price = this.selectedProducts[index].product.price;
-      } else {
-        this.selectedProducts.splice(index, 1);
-        this.price = product.price;
-      }
-      this.isSum = false;
-
-      this.calculateTotal();
+    this.index = this.selectedProducts.findIndex(item => item.product === product);
+    if (this.index !== -1) {
+        if (this.selectedProducts[this.index].quantity > 1) {
+            this.selectedProducts[this.index].quantity--;
+        } else {
+            this.selectedProducts.splice(this.index, 1);
+            if (this.index === this.selectedProducts.length) { // Se era o último item, ajuste o índice
+                this.index -= 1;
+            }
+        }
+        this.isSum = false;
+        this.calculateTotal();
     }
-  }
+}
+
 
   getQuantity(product: Products): number {
     const item = this.selectedProducts.find(item => item.product === product);

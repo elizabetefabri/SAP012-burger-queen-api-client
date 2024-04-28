@@ -9,20 +9,8 @@
       </section>
     </header>
 
-  <div class="pl-5 pr-5 text-white flex items-center justify-between">
-    <div class="flex items-center">
-      <h3 class="flex items-center m-0">
-        Nome do produto
-      </h3>
-      <mat-icon aria-hidden="false" fontIcon="fiber_manual_record" class="matIconEdit text-color-font-orange text-xs mx-2"></mat-icon>
-      <h4 class="m-0">R$500</h4>
-    </div>
-    <!-- Ícone de deletar -->
-    <div class="items-center rounded-3xl border border-color-font-orange">
-      <mat-icon aria-hidden="false" fontIcon="delete" class="matIconEdit text-2xl"></mat-icon>
-    </div>
-  </div>
-
+    <!-- Listar produtos -->
+    <app-listar-produto [selectedProducts]="selectedProducts"></app-listar-produto>
 
     <!-- Grupo de Input, Botão Cadastrar e Total com Grid -->
     <footer class="grid-area p-5" style="display: grid; grid-template-rows: 1fr auto; grid-template-columns: 1fr; gap: 10px;">

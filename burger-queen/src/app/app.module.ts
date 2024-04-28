@@ -19,7 +19,10 @@ import { MenuTabsComponent } from './Layout/Components/registrar-pedido/menu-tab
 import { FinalizarPedidoComponent } from './Layout/Components/registrar-pedido/finalizar-pedido/finalizar-pedido.component';
 import { TotalPedidoComponent } from './Layout/Components/registrar-pedido/total-pedido/total-pedido.component';
 import { HeaderComponent } from './Layout/Components/header/header.component';
+
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ListarProdutoComponent } from './Layout/Components/registrar-pedido/listar-produto/listar-produto.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { MatIconModule } from '@angular/material/icon';
     MenuTabsComponent,
     FinalizarPedidoComponent,
     TotalPedidoComponent,
-    HeaderComponent
+    HeaderComponent,
+    ListarProdutoComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     BrowserAnimationsModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

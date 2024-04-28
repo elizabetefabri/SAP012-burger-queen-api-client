@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Products } from 'src/Models/Produto';
 
 @Component({
@@ -7,21 +8,33 @@ import { Products } from 'src/Models/Produto';
   styleUrls: ['./menu-tabs.component.css']
 })
 export class MenuTabsComponent {
-// @Input() selectedProducts: { product: Products, quantity: number }[] = [];
+  // @Input() selectedProducts: { product: Products, quantity: number }[] = [];
   @Input() beverages: Products[] = [];
   @Input() lunch: Products[] = [];
   @Input() breakfast: Products[] = [];
-  @Output() totalEmit: EventEmitter<{price: number, isSum: boolean}> = new EventEmitter<{price: number, isSum: boolean}>();
+  @Output() totalEmit: EventEmitter<{products: { product: Products, quantity: number }[], index: number, isSum: boolean, total: number}> = new EventEmitter<{products: { product: Products, quantity: number }[], index: number, isSum: boolean, total: number}>();
 
   totalPedido: number = 0;
 
-  registraTotal(event: {price: number, isSum: boolean}){
-    console.log(event);
+  registraTotal(event: {products: { product: Products, quantity: number }[], index: number, isSum: boolean}){
+    console.log("Beverages", this.beverages);
     if (event.isSum) {
-      this.totalPedido += event.price;
+      this.totalPedido += event.products[event.index].product.price ;
     } else {
-      this.totalPedido -= event.price;
+      this.totalPedido -= event.products[event.index].product.price;
     }
-    this.totalEmit.emit({price: this.totalPedido, isSum: event.isSum}); // Emit totalPedido for display
+    this.totalEmit.emit(
+      {
+        products: event.products,
+        index: event.index,
+        isSum: event.isSum,
+        total: this.totalPedido
+      }
+    );
+
   }
+
+
+
+
 }

@@ -30,6 +30,7 @@ export class RegistrarPedidoComponent implements OnInit{
   breakfast: Products[] = [];
 
   totalPedido: number = 0;
+  name: string = "";
 
   constructor(private authService: AuthService, private productService: ProductsService, private route: ActivatedRoute) {}
 
@@ -45,20 +46,21 @@ export class RegistrarPedidoComponent implements OnInit{
       },
       error: (error) => {
 
-        console.log('Erro ao processar a solicitação:', error);
+        // console.log('Erro ao processar a solicitação:', error);
 
-        console.log('Erro ao carregar produtos: ', error);
+        // console.log('Erro ao carregar produtos: ', error);
 
       }
     });
   }
 
-  atualizarTotal(event: {price: number, isSum: boolean}): void{
-    console.log(event);
+  atualizarTotal(event: { products: { product: Products, quantity: number }[], index: number, isSum: boolean, total: number }): void {
+
     if(event.isSum){
-      this.totalPedido += event.price;
+      this.totalPedido += event.total;
+
     } else {
-      this.totalPedido -= event.price;
+      this.totalPedido -= event.total;
     }
   }
 }

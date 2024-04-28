@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
 export class TotalPedidoComponent {
 
   @Input() totalPedido: number = 0;
-
+  @Input() name: string = "";
 
 }
