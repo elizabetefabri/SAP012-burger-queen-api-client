@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/Shared/Services/auth.service';
-import { Login } from 'src/Models/Login';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -10,22 +11,65 @@ import { Login } from 'src/Models/Login';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  loginData: Login = {id:0, email:"", senha:""}
+  loginData!: FormGroup;
+  loading: boolean = false;
+  hide: boolean = true;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginData = this.formBuilder.group({
+      email: ["", [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
 
-  onLogin() {
-    if (this.loginData.email && this.loginData.senha) {
-      this.auth.login(this.loginData.email, this.loginData.senha);
+  onLogin(): void {
+    if (this.loginData.valid) {
+      this.loading = true;
+      const { email, password } = this.loginData.value;
+
+      this.auth.login(email, password).subscribe({
+        next: (res) => {
+          localStorage.setItem('token', res.accessToken);
+          localStorage.setItem('idUser', res.user.id);
+          localStorage.setItem('role', res.user.role);
+          this.redirectUser(res.user.role);
+        },
+        error: (error) => {
+          this.showSnackBar('Invalid credentials', 'Error');
+          this.loading = false;
+        }
+      });
     } else {
-      alert('Por favor, preencha todos os campos.');
+      this.showSnackBar('Please check your form', 'Form Invalid');
     }
   }
 
-  deslogar() {
-    this.auth.logout();
+  showSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+
+  redirectUser(role: string): void {
+    switch (role) {
+      case 'admin':
+        this.router.navigate(['registrar-mesa']);
+        break;
+      default:
+        this.router.navigate(['']);
+        break;
+    }
+  }
+
+  togglePasswordVisibility(): void {
+    this.hide = !this.hide;
   }
 
 }
