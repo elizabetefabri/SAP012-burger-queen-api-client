@@ -46,28 +46,5 @@ export class AuthService {
     this.currentUser.next(null);
   }
 
-  // getCurrentUser(): Observable<Login | null> {
-  //   const token = localStorage.getItem('token');
-  //   if (!token) {
-  //     this.currentUser.next(null);
-  //     return of(null);
-  //   }
 
-  //   const headers = new HttpHeaders({
-  //     'Authorization': `Bearer ${token}`
-  //   });
-
-  //   return this.http.get<Login>(`${this.apiUrl}/user`, { headers }).pipe(
-  //     catchError((error) => {
-  //       console.error('Erro ao obter usuário:', error);
-  //       return of(null);
-  //     })
-  //   );
-  // }
-
-  // private checkAuthentication(): void {
-  //   if (this.isAuthenticated()) {
-  //     this.getCurrentUser().subscribe();
-  //   }
-  // }
 }
