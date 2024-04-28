@@ -4,8 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Products } from 'src/Models/Produto';
-import { formatProducts } from 'src/Utils/transforms';
 import { AuthService } from '../auth.service';
+import { formatProducts } from 'src/Utils/transforms';
 
 @Injectable({
   providedIn: 'root'
