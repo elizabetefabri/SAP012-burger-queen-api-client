@@ -7,33 +7,40 @@
     <div class="container__form w-full max-w-md">
       <h3 class="text-color-font-orange text-left mb-4">Login</h3>
       <form
+        [formGroup]="loginData"
         (ngSubmit)="onLogin()"
         class="space-y-4 mb-8 max-w-[500px] w-full"
         >
         <input
           class="text-color-font-white border border-color-font-orange bg-transparent p-2 w-full h-[50px]"
-          [(ngModel)]="loginData.email"
+          formControlName="email"
           type="email"
           placeholder="Digite seu e-mail"
-          name="email"
           id="email"
           required
+        >
+        <div class="relative">
+          <input
+            class="text-white border border-color-font-orange bg-transparent pl-2 pr-10 w-full h-12"
+            formControlName="password"
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Senha"
+            id="password"
+            required
           >
-        <input
-          class="text-color-font-white border border-color-font-orange bg-transparent p-2 w-full h-[50px]"
-          [(ngModel)]="loginData.senha"
-          type="password"
-          name="senha"
-          id="senha"
-          placeholder="Senha"
-          required
-          >
-          <div class="flex justify-between items-center space-x-2.5">
-            <button
-              type="submit"
-              class="btn btnEntrar content-center text-color-font-white bg-color-font-orange p-2 w-full h-[50px] hover:bg-orange-600 hover:text-color-background">
-              Entrar
-            </button>
+          <button type="button" (click)="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600">
+            <mat-icon aria-hidden="false" class="text-3xl">
+              {{ hide ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </button>
+        </div>
+        <div class="flex justify-between items-center space-x-2.5">
+          <button
+            type="submit"
+            class="btn btnEntrar content-center text-color-font-white bg-color-font-orange p-2 w-full h-[50px] hover:bg-orange-600 hover:text-color-background"
+            [disabled]="loginData.invalid || loading">
+            Entrar
+          </button>
           </div>
       </form>
     </div>
