@@ -22,6 +22,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  openModal() {
+    // this.orderSh.$modal.emit(true)
+  }
+
   deslogar(){
     this.auth.logout()
   }
