@@ -1,0 +1,42 @@
+<header class="text-left p-5">
+  <section class="nomeCliente">
+    <h2 class="text-white mb-3 border-b-2 border-color-border-gray flex justify-between items-center">
+      Cliente: {{ nomeCliente || '...' }}
+      <em class="text-color-font-gray">Mesa {{ mesaId }}</em>
+    </h2>
+  </section>
+</header>
+
+<main class="container__registra-produtos px-1 flex flex-col">
+  <div class="max-w-[850px] w-full rounded-lg flex flex-col justify-between mx-auto">
+    <section class="order-section px-4 py-2">
+      <!-- Product Line Rendering Loop (ngFor) -->
+      <div *ngFor="let item of selectedProducts"
+        class="flex justify-between items-center mb-2 p-2 border-b border-color-border-gray">
+        <div class="flex items-center">
+          <h4 class="text-white">Nome do produto: {{ item.product.name }} </h4>
+          <h5 class="text-white ml-2">R$ {{ item.product.price }} </h5>
+        </div>
+        <app-btn-toggle [product]="item.product" (quantityChange)="handleQuantityChange($event)">
+        </app-btn-toggle>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="p-5 grid gap-4">
+  <div class="grid grid-cols-2 gap-4">
+    <div class="flex items-center">
+      <input [(ngModel)]="nomeCliente" type="text" placeholder="Digite o nome do cliente"
+        class="p-2 h-12 bg-transparent text-white border-2 border-color-border-gray flex-grow rounded-l-md focus:outline-none">
+      <button (click)="registerNameCliente()"
+        class="p-2 text-white bg-color-btn hover:bg-color-main w-[150px] h-12 rounded-r-md">
+        Cadastrar
+      </button>
+    </div>
+    <a href="/"
+      class="text-white text-center border border-color-border-gray bg-color-btn hover:bg-color-main p-3 rounded">
+      Enviar pedido
+    </a>
+  </div>
+</footer>
