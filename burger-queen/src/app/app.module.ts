@@ -17,17 +17,18 @@ import { CadastroComponent } from './Layout/Components/cadastro/cadastro.compone
 import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/registrar-mesa.component';
 import { CardsMesaComponent } from './Layout/Components/registrar-mesa/cards-mesa/cards-mesa.component';
 import { RegistrarPedidoComponent } from './Layout/Components/registrar-pedido/registrar-pedido.component';
-import { CardsPedidoComponent } from './Layout/Components/registrar-pedido/cards-pedido/cards-pedido.component';
-import { MenuTabsComponent } from './Layout/Components/registrar-pedido/menu-tabs/menu-tabs.component';
-import { FinalizarPedidoComponent } from './Layout/Components/registrar-pedido/finalizar-pedido/finalizar-pedido.component';
+
 import { TotalPedidoComponent } from './Layout/Components/registrar-pedido/total-pedido/total-pedido.component';
 import { HeaderComponent } from './Layout/Components/header/header.component';
-import { ListarProdutoComponent } from './Layout/Components/registrar-pedido/listar-produto/listar-produto.component';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MenuComponent } from './Layout/Components/registrar-pedido/menu/menu.component';
+import { CardsComponent } from './Layout/Components/registrar-pedido/menu/cards/cards.component';
+import { BtnToggleComponent } from './Layout/Components/registrar-pedido/menu/btn-toggle/btn-toggle.component';
+import { FinalizarPedidoComponent } from './Layout/Components/registrar-pedido/menu/finalizar-pedido/finalizar-pedido.component';
 
 @NgModule({
   declarations: [
@@ -38,12 +39,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RegistrarMesaComponent,
     CardsMesaComponent,
     RegistrarPedidoComponent,
-    CardsPedidoComponent,
-    MenuTabsComponent,
-    FinalizarPedidoComponent,
     TotalPedidoComponent,
     HeaderComponent,
-    ListarProdutoComponent
+    MenuComponent,
+    CardsComponent,
+    BtnToggleComponent,
+    FinalizarPedidoComponent
   ],
   imports: [
     BrowserModule,
