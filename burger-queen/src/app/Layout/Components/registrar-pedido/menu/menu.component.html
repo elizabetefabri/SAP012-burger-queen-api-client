@@ -1,10 +1,10 @@
-<mat-tab-group color="success">
+<mat-tab-group  color="success">
   <mat-tab label="Bebidas">
     <app-cards
-      type="Beverages"
-      (totalEmmiter)="registraTotal($event)"
-    >
-    </app-cards>
+    type="Beverages"
+    (totalEmmiter)="registraTotal($event)"
+  >
+  </app-cards>
     <!-- COMPONENTE DEMOSTRATIVO DE TOTALIZAR O PEDIDO -->
     <section class="max-w-[1000px] mx-auto p-1 bg-color-background-logado flex justify-center items-center rounded-lg">
       <main class="sombra w-full  border-2 border-color-border-gray rounded-lg text-white p-6">
@@ -12,6 +12,7 @@
       </main>
     </section>
   </mat-tab>
+
   <mat-tab label="Lanches">
     <app-cards
     type="Lunch"
@@ -24,6 +25,7 @@
       </main>
     </section>
   </mat-tab>
+
   <mat-tab label="Café da manhã">
     <app-cards
     type="Breakfast"
@@ -36,8 +38,10 @@
       </main>
     </section>
   </mat-tab>
+
   <mat-tab label="Finalizar pedido">
     <app-finalizar-pedido [totalPedido]="totalPedido"></app-finalizar-pedido>
 
   </mat-tab>
+
 </mat-tab-group>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { Products } from 'src/Models/Produto';
+import { Product } from 'src/Models/Produto';
 import { AuthService } from '../auth.service';
 import { formatProducts } from 'src/Utils/transforms';
 
@@ -27,26 +27,47 @@ export class ProductsService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
    // Método para listar todos os produtos
-   listProducts(): Observable<Products[]> {
+   listProducts(): Observable<Product[]> {
     return this.http.get<any[]>(`${this.apiUrl}/products`).pipe(
       map(data => data.map(apiData => formatProducts(apiData))),
       catchError(this.handleError)
     );
   }
 
-  listProductsByType(type: string): Observable<Products[]> {
+  listProductsByType(type: string): Observable<Product[]> {
     const headers = this.solicitarAuthorizationHeader();
-    return this.http.get<Products[]>(`${this.apiUrl}/products?type=${type}`, { headers }).pipe(
+    return this.http.get<Product[]>(`${this.apiUrl}/products?type=${type}`, { headers }).pipe(
       catchError(this.handleError)
     );
   }
 
   // Método para obter um produto específico pelo ID
-  getProductById(id: number): Observable<Products> {
+  getProductById(id: number): Observable<Product> {
     return this.http.get<any>(`${this.apiUrl}/products/${id}`).pipe(
       map(apiData => formatProducts(apiData)),
       catchError(this.handleError)
     );
+  }
+
+  // Adicionar novo produto
+  postProduct(product: Product): Observable<any> {
+    return this.http.post<Product>(`${this.apiUrl}/products`, product, {
+        headers: this.solicitarAuthorizationHeader(),
+    });
+  }
+
+  // Remover produto por ID
+  deleteProduct(id: string): Observable<Product> {
+    return this.http.delete<Product>(`${this.apiUrl}/products/${id}`);
+  }
+
+  // Postar pedido
+  postOrder(order: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/orders`, order, {
+        headers: new HttpHeaders({
+            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+        }),
+    });
   }
 
   // Método para lidar com erros

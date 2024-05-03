@@ -1,6 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/Shared/Services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from 'src/app/Shared/Services/Orders/orders.service';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   mesaId: string = '';
+  totalPedido: number = 0;
 
-  constructor(private auth: AuthService, private route: ActivatedRoute) {}
+  constructor(
+    private auth: AuthService,
+    private orderService: OrdersService,
+    private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getMesaIdFromUrl();
@@ -22,8 +27,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  closeModal(){}
   openModal() {
     // this.orderSh.$modal.emit(true)
+    this.orderService.openModal();
   }
 
   deslogar(){

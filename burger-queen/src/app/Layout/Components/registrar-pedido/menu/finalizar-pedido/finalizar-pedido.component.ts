@@ -1,8 +1,9 @@
+import { OrdersService } from './../../../../../Shared/Services/Orders/orders.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/Shared/Services/Products/products.service';
-import { Products } from 'src/Models/Produto';
+import { Product } from 'src/Models/Produto';
 
 @Component({
   selector: 'app-finalizar-pedido',
@@ -10,24 +11,27 @@ import { Products } from 'src/Models/Produto';
   styleUrls: ['./finalizar-pedido.component.css']
 })
 export class FinalizarPedidoComponent implements OnInit{
-  @Input() selectedProducts: { product: Products, quantity: number }[] = [];
+  @Input() selectedProducts: { product: Product, quantity: number }[] = [];
   @Input() totalPedido: number = 0;
   @Input() mesaId: string = '';
   nomeCliente: string = '';
   nomeCadastrado: string = '';
-  @Input() products: Products[] = [];
+  orders: any[] = [];
+
+  @Input() products: Product[] = [];
 
   @Output() totalEmmiter: EventEmitter<{
-    products: { product: Products; quantity: number }[];
+    products: { product: Product; quantity: number }[];
     index: number;
     isSum: boolean;
   }> = new EventEmitter<{
-    products: { product: Products; quantity: number }[];
+    products: { product: Product; quantity: number }[];
     index: number;
     isSum: boolean;
   }>();
 
   constructor(
+    private orderService: OrdersService,
     private productService: ProductsService,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar
@@ -35,6 +39,7 @@ export class FinalizarPedidoComponent implements OnInit{
 
   ngOnInit(): void {
     this.getMesaIdFromUrl();
+    this.loadOrders();
   }
 
   getMesaIdFromUrl(): void {
@@ -46,15 +51,26 @@ export class FinalizarPedidoComponent implements OnInit{
   registerNameCliente(): void {
     if (this.nomeCliente.trim() !== '') {
       this.nomeCadastrado = this.nomeCliente;
-      this.nomeCliente = '';
     }
+    this.nomeCliente = '';
+  }
+
+  loadOrders(): void {
+    this.orderService.getOrder(status).subscribe(
+      (response) => {
+        this.orders = response;
+      },
+      (error) => {
+        console.error("Erro ao carregar pedidos: ", error);
+      }
+    )
   }
 
   updateTotalPedido(): void {
     this.totalPedido = this.selectedProducts.reduce((total, item) => total + (item.product.price * item.quantity), 0);
   }
 
-  handleQuantityChange(change: { product: Products; quantity: number }): void {
+  handleQuantityChange(change: { product: Product; quantity: number }): void {
     const index = this.selectedProducts.findIndex(
       (item) => item.product.id === change.product.id
     );
@@ -69,8 +85,9 @@ export class FinalizarPedidoComponent implements OnInit{
       this.selectedProducts.push(change);
     }
     this.calculateTotal();
-    // this.updateTotalPedido();
   }
+
+
   calculateTotal(): void {
     this.totalEmmiter.emit({
       products: this.selectedProducts,
@@ -78,6 +95,5 @@ export class FinalizarPedidoComponent implements OnInit{
       isSum: true,
     });
   }
-
-
+  removeItem(): void {}
 }

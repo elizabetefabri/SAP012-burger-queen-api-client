@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProductsService } from 'src/app/Shared/Services/Products/products.service';
-import { Products } from 'src/Models/Produto';
+import { Item } from 'src/Models/Order';
+import { Product } from 'src/Models/Produto';
 
 @Component({
   selector: 'app-cards',
@@ -9,15 +10,16 @@ import { Products } from 'src/Models/Produto';
 })
 export class CardsComponent implements OnInit {
   @Input() type: string = '';
-  @Input() products: Products[] = [];
-  @Input() selectedProducts: { product: Products; quantity: number }[] = [];
+  @Input() items: Item[] = [];
+
+  @Input() selectedProducts: { product: Product; quantity: number }[] = [];
 
   @Output() totalEmmiter: EventEmitter<{
-    products: { product: Products; quantity: number }[];
+    products: { product: Product; quantity: number }[];
     index: number;
     isSum: boolean;
   }> = new EventEmitter<{
-    products: { product: Products; quantity: number }[];
+    products: { product: Product; quantity: number }[];
     index: number;
     isSum: boolean;
   }>();
@@ -25,10 +27,13 @@ export class CardsComponent implements OnInit {
   constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.items = this.items.filter(
+    (item) => item.product.tipo === this.type
+    )
+    // this.loadProducts();
   }
 
-  handleQuantityChange(change: { product: Products; quantity: number }): void {
+  handleQuantityChange(change: { product: Product; quantity: number }): void {
     const index = this.selectedProducts.findIndex(
       (item) => item.product.id === change.product.id
     );
@@ -46,16 +51,16 @@ export class CardsComponent implements OnInit {
     // this.updateTotalPedido();
   }
 
-  loadProducts(): void {
-    this.productService.listProductsByType(this.type).subscribe({
-      next: (data: Products[]) => {
-        this.products = data;
-      },
-      error: (error) => {
-        console.log('Erro ao carregar os produtos: ', error);
-      },
-    });
-  }
+  // loadProducts(): void {
+  //   this.productService.listProductsByType(this.type).subscribe({
+  //     next: (data: Products[]) => {
+  //       this.products = data;
+  //     },
+  //     error: (error) => {
+  //       console.log('Erro ao carregar os produtos: ', error);
+  //     },
+  //   });
+  // }
 
   calculateTotal(): void {
     this.totalEmmiter.emit({

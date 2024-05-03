@@ -1,9 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/Shared/Services/auth.service';
-import { ProductsService } from 'src/app/Shared/Services/Products/products.service';
-import { Products } from 'src/Models/Produto';
+
+import { Product } from 'src/Models/Produto';
 
 @Component({
   selector: 'app-registrar-pedido',
@@ -23,38 +21,19 @@ import { Products } from 'src/Models/Produto';
 })
 
 export class RegistrarPedidoComponent implements OnInit{
-  product: Products[] = [];
-
-  beverages: Products[] = [];
-  lunch: Products[] = [];
-  breakfast: Products[] = [];
-
+  product: Product[] = [];
+  beverages: Product[] = [];
+  lunch: Product[] = [];
+  breakfast: Product[] = [];
   totalPedido: number = 0;
   name: string = "";
 
-  constructor(private authService: AuthService, private productService: ProductsService, private route: ActivatedRoute) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.loadProducts();
-    // this.getUsuarioLogado();
-  }
+  ngOnInit(): void {  }
 
-  loadProducts(): void {
-    this.productService.listProducts().subscribe({
-      next: (data: Products[]) => {
-        this.product = data;
-      },
-      error: (error) => {
 
-        // console.log('Erro ao processar a solicitação:', error);
-
-        // console.log('Erro ao carregar produtos: ', error);
-
-      }
-    });
-  }
-
-  atualizarTotal(event: { products: { product: Products, quantity: number }[], index: number, isSum: boolean, total: number }): void {
+  atualizarTotal(event: { products: { product: Product, quantity: number }[], index: number, isSum: boolean, total: number }): void {
 
     if(event.isSum){
       this.totalPedido += event.total;
