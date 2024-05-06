@@ -5,14 +5,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ModalComponent } from 'src/app/Layout/Components/registrar-pedido/menu/modal/modal.component';
 
 import { Order } from 'src/Models/Order';
-import { ProductsQty } from 'src/Models/Produto';
+// import { ProductsQty } from 'src/Models/Produto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
   private readonly apiUrl = 'https://burger-queen-api-mock.up.railway.app';
-  productsOrder: ProductsQty[] = [];
+  // productsOrder: ProductsQty[] = [];
   order: Order[] = [];
 
   constructor(
@@ -20,7 +20,7 @@ export class OrdersService {
     private dialog: MatDialog
   ) {}
 
-  private productsOrderSubject = new BehaviorSubject<ProductsQty[]>([]);
+  // private productsOrderSubject = new BehaviorSubject<ProductsQty[]>([]);
   private totalSubject = new BehaviorSubject<number>(0);
   private orderSubject = new BehaviorSubject<Order[]>([]);
   private qtySubject = new BehaviorSubject<number>(0);
@@ -33,9 +33,7 @@ export class OrdersService {
     this.dialog.closeAll();
   }
 
-  get productsOrder$(): Observable<ProductsQty[]> {
-    return this.productsOrderSubject.asObservable();
-  }
+
 
   get total$(): Observable<number> {
     return this.totalSubject.asObservable();
@@ -49,49 +47,43 @@ export class OrdersService {
     return this.qtySubject.asObservable();
   }
 
-  private totalCount(): void {
-    const total: number = this.productsOrder.reduce(
-      (total, el) => (total += el.product.price * el.qty),
-      0
-    );
-    this.totalSubject.next(total);
-  }
 
-  deleteProduct(id: string): void {
-    this.productsOrder = this.productsOrder.filter((el) => {
-      return el.product.id.toString() !== id;
-    });
-    this.productsOrderSubject.next(this.productsOrder);
-    this.totalCount();
-    this.qtyAddedProducts();
-  }
 
-  qtyOperations(operations: string, id: string) {
-    const product = this.productsOrder.find((el) => {
-      return el.product.id.toString() === id;
-    });
-    if (product) {
-      if (operations === 'minus' && product.qty > 0) {
-        product.qty = product.qty - 1;
-        this.totalCount();
-        this.qtyAddedProducts();
-      }
-      if (operations === 'add') {
-        product.qty = product.qty + 1;
-        this.totalCount();
-        this.qtyAddedProducts();
-      }
-      if (product.qty === 0) {
-        this.deleteProduct(id);
-        this.qtyAddedProducts();
-      }
-    }
-  }
+  // deleteProduct(id: string): void {
+  //   this.productsOrder = this.productsOrder.filter((el) => {
+  //     return el.product.id.toString() !== id;
+  //   });
+  //   this.productsOrderSubject.next(this.productsOrder);
+  //   this.totalCount();
+  //   this.qtyAddedProducts();
+  // }
 
-  qtyAddedProducts() {
-    const qty: number = this.productsOrder.reduce((a, b) => (a += b.qty), 0);
-    this.qtySubject.next(qty);
-  }
+  // qtyOperations(operations: string, id: string) {
+  //   const product = this.productsOrder.find((el) => {
+  //     return el.product.id.toString() === id;
+  //   });
+  //   if (product) {
+  //     if (operations === 'minus' && product.qty > 0) {
+  //       product.qty = product.qty - 1;
+  //       this.totalCount();
+  //       this.qtyAddedProducts();
+  //     }
+  //     if (operations === 'add') {
+  //       product.qty = product.qty + 1;
+  //       this.totalCount();
+  //       this.qtyAddedProducts();
+  //     }
+  //     if (product.qty === 0) {
+  //       this.deleteProduct(id);
+  //       this.qtyAddedProducts();
+  //     }
+  //   }
+  // }
+
+  // qtyAddedProducts() {
+  //   const qty: number = this.productsOrder.reduce((a, b) => (a += b.qty), 0);
+  //   this.qtySubject.next(qty);
+  // }
 
   // Cabeçalhos de autorização
   private solicitarAuthorizationHeader(): HttpHeaders {

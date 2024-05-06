@@ -28,8 +28,20 @@ export class ProductsService {
 
    // Método para listar todos os produtos
    listProducts(): Observable<Product[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/products`).pipe(
-      map(data => data.map(apiData => formatProducts(apiData))),
+    // return this.http.get<any[]>(`${this.apiUrl}/products`).pipe(
+    //   map(data => data.map(apiData => formatProducts(apiData))),
+    //   catchError(this.handleError)
+    // );
+    const headers = this.solicitarAuthorizationHeader();
+    return this.http.get<Product[]>(`${this.apiUrl}/products`, { headers }).pipe(
+      map(apiData =>
+        apiData.map(product => {
+          console.log(product)
+          return formatProducts(product)
+        })
+
+      ),
+
       catchError(this.handleError)
     );
   }

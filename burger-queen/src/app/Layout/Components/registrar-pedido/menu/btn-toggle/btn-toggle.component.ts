@@ -8,9 +8,6 @@ import { Item } from 'src/Models/Order';
 })
 export class BtnToggleComponent {
   @Input() item!: Item;
-  // @Input() index: number = 0;
-  @Input() index!: number;
-  // @Input() index?: number;
   @Output() quantityChange: EventEmitter<Item> = new EventEmitter();
 
   quantity: number = 0;
@@ -23,7 +20,7 @@ export class BtnToggleComponent {
   }
 
   decreaseQuantity(): void {
-    if (this.quantity > 0) {
+    if (this.item.quantity > 0) {
       this.item.quantity--;
       this.quantityChange.emit(this.item);
     }

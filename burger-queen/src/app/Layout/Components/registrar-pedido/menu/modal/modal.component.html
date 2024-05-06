@@ -8,26 +8,8 @@
     </div>
 
     <section class="order-summary">
-      <article class="product-article" *ngFor="let product of productsOrder$ | async">
-        <p class="product-name">{{product.product.name}}</p>
-        <div class="product-operation">
-          <button class="button-icon" (click)="update('minus', product.product.id.toString())"
-          >
-            <span class="material-icons">remove</span>
-          </button>
-          <p>{{product.qty}}</p>
-          <button class="button-icon" (click)="update('add', product.product.id.toString())"
-          >
-            <span class="material-icons">add</span>
-          </button>
-        </div>
-        <p class="product-price">{{product.product.price * product.qty | currency }}</p>
-        <span class="material-icons icon" (click)="delete(product.product.id.toString())">delete</span>
-      </article>
-      <div class="total-price">
-        <p>Total</p>
-        <p>{{total$ | async | currency}}</p>
-      </div>
+
+
     </section>
   </main>
 </section>

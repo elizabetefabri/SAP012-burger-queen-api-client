@@ -15,9 +15,7 @@ enum Operation {
 export class ModalComponent implements OnInit{
   constructor(private orderService: OrdersService) {}
 
-  productsOrder$ = this.orderService.productsOrder$;
-  total$ = this.orderService.total$;
-  order$ = this.orderService.order$;
+
 
 
   totalPedido: number = 0;
@@ -26,13 +24,6 @@ export class ModalComponent implements OnInit{
     // this.productsOrder$.subscribe((response) => (this.noProduct = response));
   }
 
-  delete(id: string) {
-    this.orderService.deleteProduct(id);
-  }
-
-  update(operations: 'add' | 'minus', id: string) {
-    this.orderService.qtyOperations(operations, id);
-  }
 
   openModal(): void {
     this.orderService.openModal();
