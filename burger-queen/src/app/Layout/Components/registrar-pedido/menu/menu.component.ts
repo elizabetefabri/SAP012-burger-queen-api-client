@@ -50,14 +50,12 @@ export class MenuComponent implements OnInit{
             quantity: 0
           })
         });
-        // console.log(this.order);
         this.classificarProduto();
       },
       error: (error) => {
         console.log('Erro ao carregar os produtos: ', error);
       },
     });
-
   }
 
   registraTotal(item: Item) {
@@ -73,8 +71,6 @@ export class MenuComponent implements OnInit{
     }
 
     this.totalPedido = this.order.items.reduce((total, item) => total + (item.product.price * item.quantity), 0);
-    console.log(this.order, this.totalPedido)
-
   }
 
   classificarProduto(): void {

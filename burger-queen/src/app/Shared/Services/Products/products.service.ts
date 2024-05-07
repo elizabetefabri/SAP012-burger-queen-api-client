@@ -36,12 +36,9 @@ export class ProductsService {
     return this.http.get<Product[]>(`${this.apiUrl}/products`, { headers }).pipe(
       map(apiData =>
         apiData.map(product => {
-          console.log(product)
           return formatProducts(product)
         })
-
       ),
-
       catchError(this.handleError)
     );
   }

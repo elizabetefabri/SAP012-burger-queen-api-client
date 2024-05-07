@@ -2,3 +2,7 @@ main{
   width: 400px;
   height: 400px;
 }
+.close-icon{
+  width: 35px;
+  font-size: 15px;
+}
