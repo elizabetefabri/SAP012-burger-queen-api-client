@@ -4,8 +4,9 @@ import { HomeComponent } from './Layout/Pages/home/home.component';
 import { LoginComponent } from './Layout/Components/login/login.component';
 import { CadastroComponent } from './Layout/Components/cadastro/cadastro.component';
 import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/registrar-mesa.component';
-import { RegistrarPedidoComponent } from './Layout/Components/registrar-pedido/registrar-pedido.component';
+
 import { AuthGuard } from './guards/auth.guard';
+import { MenuComponent } from './Layout/Components/registrar-pedido/menu/menu.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'registrar-pedido',
-    component: RegistrarPedidoComponent
+    component: MenuComponent
   }
 ];
 

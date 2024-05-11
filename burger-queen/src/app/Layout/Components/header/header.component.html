@@ -1,33 +1,29 @@
-<header class="container__header p-10 bg-color-header text-color-font-white">
-  <nav class="max-w-[1000px] w-full mx-auto flex justify-between items-center">
-    <!-- Agrupamento do primeiro link -->
+<header class="container__header p-5 bg-color-header text-color-font-white">
+  <nav class="max-w-[850px] h-12 w-full mx-auto flex justify-between items-center">
     <div class="flex items-center">
-      <a routerLink="/registrar-mesa" class="flex items-center text-color-font-gray">
-        <i class="fas fa-arrow-left mr-2 text-color-font-gray close"></i>
-        Voltar
+      <a routerLink="/registrar-mesa" class="text-color-font-gray">
+        <mat-icon aria-hidden="false" fontIcon="first_page" class="text-color-font-gray h-10 w-10"></mat-icon>
+      </a>
+      <a href="" class=" pl-5">
+        <span class=" text-color-font-orange">
+          <em class="text-color-font-orange pr-2">Mesa</em>{{ mesaId }}
+        </span>
       </a>
     </div>
 
-    <!-- Agrupamento dos links do meio -->
-    <div class="flex-1 flex justify-center items-center space-x-4">
-      <a href="" class="flex items-center text-color-font-white">
-        <em class="text-white outline-none border-b-2 border-color-font-gray">
-
-        </em>
-      </a>
-      <a href="" class="flex items-center text-color-font-gray">
-        <i class='far fa-eye text-color-font-gray close pr-2'></i>
-        Status do pedido
-      </a>
-    </div>
-
-    <!-- Agrupamento do último link -->
     <div class="flex items-center">
+      <button
+      (click)="openModal()"
+      class="pr-10">
+          <mat-icon aria-hidden="false" fontIcon="assignment" class="text-color-font-gray h-10 w-10"></mat-icon>
+      </button>
+
+      <a href="" class="flex items-center text-color-font-gray pr-10">
+        <em class="">Admin</em>
+      </a>
       <a (click)="deslogar()" class="flex items-center text-color-font-gray">
-        Sair
-        <i class="text-color-font-gray fas fa-sign-out-alt close pl-2"></i>
+        <em class="">Sair</em>
       </a>
     </div>
   </nav>
 </header>
-

@@ -1,14 +1,7 @@
 <!-- COMPONETE PAGINA DE CARD -->
-<section class="container__registra-mesa pl-4 bg-color-background-logado min-h-screen flex flex-col">
-  <main class="container__main w-full ">
-    <div class="container__card">
-      <div class="container__card-mesa relative border-2 border-color-border-gray rounded-lg flex items-center justify-center">
-        <a [routerLink]="['/registrar-pedido']" class="block" (click)="redirectRegistrarPedido(mesaNumero)">
-          <h4 class="text-center text-xl text-color-font-white mb-5">Mesa {{ mesaNumero }} </h4>
-          <img src="../../../../assets/images/mesa.png" alt="Imagem da mesa" />
-        </a>
-      </div>
-    </div>
-  </main>
-</section>
-
+<div class="container__card-mesa relative border-2 border-color-border-gray rounded-lg flex items-center justify-center shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-1.5">
+  <a [routerLink]="['/registrar-pedido']" class="block text-center" (click)="redirectRegistrarPedido(mesaNumero)">
+    <h4 class="text-xl text-white mb-5">Mesa {{ mesaNumero }}</h4>
+    <img src="../../../../assets/images/mesa.png" alt="Imagem da mesa" class="w-24 h-24 mx-auto"/>
+  </a>
+</div>

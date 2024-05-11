@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/Shared/Services/auth.service';
-import { ProductsService } from 'src/app/Shared/Services/Products/products.service';
 import { Login } from 'src/Models/Login';
 
 @Component({
@@ -11,6 +10,7 @@ import { Login } from 'src/Models/Login';
 })
 export class RegistrarMesaComponent implements OnInit{
   @Input() login: Login[] = [];
+  mesas: string[] = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
   mesaId: string = '';
   usuarioLogado: string = '';
 
@@ -18,10 +18,8 @@ export class RegistrarMesaComponent implements OnInit{
 
   ngOnInit(): void {
     if (this.auth.isAuthenticated()) {
-      // Inscreva-se para receber as informações de login do usuário
       this.auth.getUserInfo().subscribe(user => {
         if (user) {
-          // Se existir um usuário logado, atualize o nome de usuário
           this.usuarioLogado = user.email;
         }
       });
@@ -32,8 +30,7 @@ export class RegistrarMesaComponent implements OnInit{
     });
   }
 
-
-  deslogar(){
-    this.auth.logout()
+  deslogar() {
+    this.auth.logout();
   }
 }

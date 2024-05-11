@@ -9,7 +9,7 @@
 
 ::ng-deep .mat-mdc-tab .mdc-tab__text-label,
 ::ng-deep .mat-mdc-tab-link .mdc-tab__text-label {
-  color: #f9fafb!important;
+  color: #fefce8!important;
 }
 
 ::ng-deep .mat-mdc-tab-header-paginator-chevron {

@@ -1,28 +1,37 @@
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/Shared/Services/auth.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { OrdersService } from 'src/app/Shared/Services/Orders/orders.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   mesaId: string = '';
-  nomeCliente: string = '';
-  usuarioLogado: string = '';
+  totalPedido: number = 0;
 
-  constructor(private auth: AuthService) {}
+  constructor(
+    private auth: AuthService,
+    private orderService: OrdersService,
+    private route: ActivatedRoute) {}
 
-    // getUsuarioLogado(): void {
-  //   this.authService.getCurrentUser().subscribe(user => {
-  //     if (user) {
-  //       this.usuarioLogado = user.role; // Atribui o papel do usuário logado
-  //     } else {
-  //       this.usuarioLogado = 'Usuário não logado'; // Define um valor padrão se nenhum usuário estiver logado
-  //     }
-  //   });
-  // }
+  ngOnInit(): void {
+    this.getMesaIdFromUrl();
+  }
 
+  getMesaIdFromUrl(): void {
+    this.route.queryParams.subscribe(params => {
+      this.mesaId = params["mesaId"] || '';
+    });
+  }
+
+  closeModal(){}
+  openModal() {
+    // this.orderSh.$modal.emit(true)
+    this.orderService.openModal();
+  }
 
   deslogar(){
     this.auth.logout()

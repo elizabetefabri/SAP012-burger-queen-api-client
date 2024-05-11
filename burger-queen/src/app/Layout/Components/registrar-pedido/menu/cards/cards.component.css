@@ -7,10 +7,15 @@
 }
 button {
   border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }
-h3{
-  font-size: 24px;
+span{
+  font-size: 18px;
 }
-p{
-  margin-bottom: -5px;
+h3 {
+  font-size: 1.125rem;
+}
+p {
+  margin-bottom: 0;
 }

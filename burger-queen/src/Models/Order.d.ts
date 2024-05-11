@@ -1,20 +1,13 @@
+import { Product } from './Produto.d';
+
 export interface Order {
   id: number;
   userId: number;
   client: string;
-  products: OrderProduct[];
+  items: Item[];
 }
 
-export interface OrderProduct {
-  qty: number;
+export interface Item {
   product: Product;
-}
-
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  type: string;
-  dateEntry: string;
+  quantity: number;
 }
