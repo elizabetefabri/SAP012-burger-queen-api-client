@@ -20,7 +20,6 @@ import { HomeComponent } from './Layout/Pages/home/home.component';
 import { CadastroComponent } from './Layout/Components/cadastro/cadastro.component';
 import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/registrar-mesa.component';
 import { CardsMesaComponent } from './Layout/Components/registrar-mesa/cards-mesa/cards-mesa.component';
-import { RegistrarPedidoComponent } from './Layout/Components/registrar-pedido/registrar-pedido.component';
 import { TotalPedidoComponent } from './Layout/Components/registrar-pedido/total-pedido/total-pedido.component';
 import { HeaderComponent } from './Layout/Components/header/header.component';
 import { MenuComponent } from './Layout/Components/registrar-pedido/menu/menu.component';
@@ -37,7 +36,6 @@ import { ModalComponent } from './Layout/Components/registrar-pedido/menu/modal/
     CadastroComponent,
     RegistrarMesaComponent,
     CardsMesaComponent,
-    RegistrarPedidoComponent,
     TotalPedidoComponent,
     HeaderComponent,
     MenuComponent,

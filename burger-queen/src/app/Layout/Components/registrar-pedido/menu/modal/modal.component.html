@@ -1,4 +1,4 @@
-<section class="container__finalizar-pedido  border-2 border-color-font-gray rounded-lg">
+<section class="container__finalizar-pedido bg-color-header border-2 border-color-font-gray rounded-lg">
   <header class="text-left p-5">
     <section class="nomeCliente">
       <h2 class="text-white mb-3 border-b-2 border-color-font-gray flex justify-between items-center">
@@ -10,34 +10,27 @@
 
   <main class="container__registra-produtos px-1 flex flex-col">
     <div class="absolute top-2 right-2">
-      <button
-        (click)="closeModal()" class="text-white">
+      <button (click)="closeModal()" class="text-white">
         <mat-icon aria-hidden="false" fontIcon="close" class="close-icon text-color-gray-icon h-8 w-8"></mat-icon>
       </button>
     </div>
     <div class="max-w-[850px] w-full rounded-lg flex flex-col justify-between mx-auto">
       <section class="order-section px-4 py-2">
-        <div *ngFor="let items of selectedProducts" class="flex justify-between items-center mb-2  border-b border-color-font-gray">
-          <div class="flex items-center justify-between w-full">
-            <div class="flex items-center">
-              <h4 class="text-white">Nome do produto: {{ items.product.name }} </h4>
-              <h5 class="text-white">R$ {{items.product.price }} </h5>
-            </div>
-            <div class="flex items-center">
-              <div class="p-1 bg-color-header flex items-center rounded-lg mr-2">
-                <app-btn-toggle
-                ></app-btn-toggle>
-              </div>
-              <button (click)="removeItem()" class="bg-color-background hover:bg-color-background p-2 rounded flex items-center justify-center">
-                <mat-icon aria-hidden="false" class="text-white">delete</mat-icon>
-              </button>
-            </div>
+        <div *ngIf="item" class="flex justify-between items-center mb-2 border-b border-color-font-gray">
+          <div class="flex items-center">
+           <h4 class="text-white">Nome do produto: {{ item.product.name }}</h4>
+            <!-- <h4 class="text-white">Nome do produto: {{ item.product?.name || 'Nome do Produto' }}</h4>
+            <h5 class="text-white">R$ {{ item.product?.price || 'Preço do Produto' }}</h5> -->
+          </div>
+          <div class="flex items-center">
+            <button (click)="removeItem()" class="bg-color-main hover:bg-color-main p-2 rounded flex items-center justify-center">
+              <mat-icon aria-hidden="false" fontIcon="delete" class="text-white"></mat-icon>
+            </button>
           </div>
         </div>
 
         <div class="container__total mt-6">
-          <app-total-pedido class="text-white" [totalPedido]="totalPedido"></app-total-pedido>
-
+          <app-total-pedido class="text-white " [totalPedido]="totalPedido"></app-total-pedido>
         </div>
       </section>
     </div>
@@ -54,8 +47,7 @@
         </button>
       </div>
 
-      <a href="/"
-        class="text-white text-center border border-color-font-gray bg-color-btn hover:bg-color-main p-3 rounded ">
+      <a href="/" class="text-white text-center border border-color-font-gray bg-color-btn hover:bg-color-main p-3 rounded ">
         Enviar pedido
       </a>
     </div>
