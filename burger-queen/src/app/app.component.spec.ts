@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { CadastroComponent } from './Layout/Components/cadastro/cadastro.component';
 import { LoginComponent } from './Layout/Components/login/login.component';
 import { RegistrarMesaComponent } from './Layout/Components/registrar-mesa/registrar-mesa.component';
-import { RegistrarPedidoComponent } from './Layout/Components/registrar-pedido/registrar-pedido.component';
 import { HomeComponent } from './Layout/Pages/home/home.component';
 
 describe('AppComponent', () => {
@@ -15,7 +14,6 @@ describe('AppComponent', () => {
       CadastroComponent,
       LoginComponent,
       RegistrarMesaComponent,
-      RegistrarPedidoComponent,
       HomeComponent
     ]
   }));
