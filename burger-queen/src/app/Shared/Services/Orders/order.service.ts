@@ -31,7 +31,6 @@ export class OrderService {
     let items = this.itemsSource.getValue();
     const index = items.findIndex((i) => i.product.id === item.product.id);
     if (index !== -1) {
-      // items[index].quantity += item.quantity;
       items[index].quantity = item.quantity;
     } else {
       items.push(item);
@@ -60,23 +59,17 @@ export class OrderService {
   }
 
   postOrder(order: Order): Observable<any> {
-    return this.http.post(this.apiUrl, order, {
-      headers: this.solicitarAuthorizationHeader(),
-    });
+    const headers = this.solicitarAuthorizationHeader();
+    return this.http.post(`${this.apiUrl}/orders`, order, { headers });
   }
 
   getOrder(status: string): Observable<Order[]> {
-    return this.http.get<Order[]>(
-      `${this.apiUrl}/orders?status=${status}&_sort=dataEntry&_order=asc`,
-      { headers: this.solicitarAuthorizationHeader() }
-    );
+    const headers = this.solicitarAuthorizationHeader();
+    return this.http.get<Order[]>(`${this.apiUrl}/orders?status=${status}`, { headers });
   }
 
   patchOrder(id: string, status: string): Observable<Order> {
-    return this.http.patch<Order>(
-      `${this.apiUrl}/orders/${id}`,
-      { status: status },
-      { headers: this.solicitarAuthorizationHeader() }
-    );
+    const headers = this.solicitarAuthorizationHeader();
+    return this.http.patch<Order>(`${this.apiUrl}/orders/${id}`, { status }, { headers });
   }
 }
