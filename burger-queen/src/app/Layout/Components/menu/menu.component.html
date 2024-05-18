@@ -1,0 +1,67 @@
+<app-header></app-header>
+<!-- COMPONENTE DE MENU -->
+<section class="container__registrar-pedido pr-1 pl-1  bg-color-background-logado flex flex-col">
+  <main class="max-w-[800px] w-full mx-auto mt-5">
+    <mat-tab-group  color="success">
+      <mat-tab label="Bebidas">
+        <app-card-product [items]="beverages" (totalEmmiter)="registraTotal($event)"></app-card-product>
+        <section class="mx-auto p-1 bg-color-background-logado flex justify-center items-center rounded-lg">
+          <main class="sombra w-full border-2 border-color-border-gray rounded-lg text-white p-6">
+            <app-total [totalPedido]="totalPedido"></app-total>
+          </main>
+        </section>
+      </mat-tab>
+
+      <mat-tab label="Lanches">
+        <app-card-product  [items]="lunch" (totalEmmiter)="registraTotal($event)"></app-card-product>
+
+        <section class="mx-auto p-1 bg-color-background-logado flex justify-center items-center rounded-lg">
+          <main class="sombra w-full  border-2 border-color-border-gray rounded-lg text-white p-6">
+            <app-total [totalPedido]="totalPedido"></app-total>
+          </main>
+        </section>
+      </mat-tab>
+
+      <mat-tab label="Café da manhã">
+        <app-card-product
+        [items]="breakfast"
+        (totalEmmiter)="registraTotal($event)"
+        ></app-card-product>
+
+        <section class="mx-auto p-1 bg-color-background-logado flex justify-center items-center rounded-lg">
+          <main class="sombra w-full  border-2 border-color-border-gray rounded-lg text-white p-6">
+            <app-total [totalPedido]="totalPedido"></app-total>
+          </main>
+        </section>
+      </mat-tab>
+
+      <mat-tab label="Combos">
+        <app-card-product
+        [items]="combos"
+        (totalEmmiter)="registraTotal($event)"
+        ></app-card-product>
+
+        <section class="mx-auto p-1 bg-color-background-logado flex justify-center items-center rounded-lg">
+          <main class="sombra w-full  border-2 border-color-border-gray rounded-lg text-white p-6">
+            <app-total [totalPedido]="totalPedido"></app-total>
+          </main>
+        </section>
+      </mat-tab>
+
+      <mat-tab label="Saladas">
+        <app-card-product
+        [items]="sides"
+        (totalEmmiter)="registraTotal($event)"
+        ></app-card-product>
+
+        <section class="mx-auto p-1 bg-color-background-logado flex justify-center items-center rounded-lg">
+          <main class="sombra w-full  border-2 border-color-border-gray rounded-lg text-white p-6">
+            <app-total [totalPedido]="totalPedido"></app-total>
+          </main>
+        </section>
+      </mat-tab>
+
+    </mat-tab-group>
+  </main>
+</section>
+

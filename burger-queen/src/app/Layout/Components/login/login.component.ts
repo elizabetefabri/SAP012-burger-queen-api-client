@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'src/app/Shared/Services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/Shared/Services/Authentication/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   loginData!: FormGroup;
   loading: boolean = false;
   hide: boolean = true;
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     this.loginData = this.formBuilder.group({
-      email: ["", [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit{
         error: (error) => {
           this.showSnackBar('Invalid credentials', 'Error');
           this.loading = false;
-        }
+        },
       });
     } else {
       this.showSnackBar('Please check your form', 'Form Invalid');
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit{
   redirectUser(role: string): void {
     switch (role) {
       case 'admin':
-        this.router.navigate(['registrar-mesa']);
+        this.router.navigate(['mesa']);
         break;
       default:
         this.router.navigate(['']);
@@ -71,5 +71,4 @@ export class LoginComponent implements OnInit{
   togglePasswordVisibility(): void {
     this.hide = !this.hide;
   }
-
 }

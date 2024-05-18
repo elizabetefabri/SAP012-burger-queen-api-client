@@ -1,0 +1,11 @@
+<!-- COMPONETE PAGINA DE REGISTRAR MESA -->
+<app-header></app-header>
+
+<!-- SEÇÃO PARA REGISTRO DE MESAS -->
+<section class="container__registra-mesa flex flex-col">
+  <main class="container__main max-w-[800px] w-full mx-auto mt-5">
+    <div class="esp grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <app-cards-mesa *ngFor="let mesa of mesas" [mesaNumero]="mesa.numero" [ocupada]="mesa.ocupada" (ocupar)="ocuparMesa($event)"></app-cards-mesa>
+    </div>
+  </main>
+</section>

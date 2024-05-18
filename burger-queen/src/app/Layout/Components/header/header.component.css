@@ -1,5 +1,13 @@
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
 header {
-  box-shadow: 0px -1px 14px -4px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 14px -4px rgba(0, 0, 0, 0.75);
 }
 
 a {
@@ -11,3 +19,32 @@ a:hover {
   transform: scale(1.10);
   opacity: 1;
 }
+
+.container__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container__header nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.container__header .flex.items-center {
+  display: flex;
+  align-items: center;
+}
+
+.container__header .relative {
+  position: relative;
+}
+
+.container__header .item-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+}
+

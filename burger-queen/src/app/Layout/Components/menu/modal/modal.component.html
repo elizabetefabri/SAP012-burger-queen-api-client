@@ -1,0 +1,60 @@
+<div class="modal-overlay max-w-[800px] w-full">
+  <section class="container__finalizar-pedido bg-color-header border-2 border-color-font-gray rounded-lg">
+    <header class="text-left p-5">
+      <section class="nomeCliente">
+        <h2 class="text-white mb-3 border-b-2 border-color-font-gray flex justify-between items-center">
+          Cliente: {{ nomeCadastrado || nomeCliente || '...' }}
+          <em class="text-white">Mesa {{ mesaId }}</em>
+        </h2>
+      </section>
+    </header>
+
+    <main class="container__registra-produtos px-1 flex flex-col">
+      <div class="absolute top-2 right-2">
+        <!-- FECHAR O MODAL -->
+        <button (click)="closeModal()" class="text-white">
+          <mat-icon aria-hidden="false" fontIcon="close" class="close-icon text-color-gray-icon h-8 w-8"></mat-icon>
+        </button>
+      </div>
+      <div class="max-w-[800px] w-full rounded-lg flex flex-col justify-between mx-auto">
+        <section class="order-section px-4 py-2 rounded-lg">
+          <div *ngFor="let item of items" class="flex justify-between items-center border-b border-color-font-gray">
+            <div class="flex items-center">
+              <h4 class="text-zinc-300 mb-0"> {{ item.quantity }} items: <span class="text-white">{{ item.product.name }}</span></h4>
+              <mat-icon aria-hidden="false" fontIcon="fiber_manual_record" class="ml-5 text-sm text-color-font-orange"></mat-icon>
+              <h5 class="text-white ml-5 mb-0">R$ {{ item.product.price * item.quantity }}</h5>
+            </div>
+            <div class="flex items-center">
+              <button (click)="removeItem(item)"
+                class="bg-color-main hover:bg-color-main p-2 rounded flex items-center justify-center">
+                <mat-icon aria-hidden="false" fontIcon="delete" class="text-white"></mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="container__total mt-6">
+            <app-total [totalPedido]="totalPedido" class="text-white"></app-total>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="p-5 grid gap-4">
+      <div class="grid grid-cols-2 gap-2">
+        <div class="flex items-center">
+          <input [(ngModel)]="nomeCliente" type="text" placeholder="Digite o nome do cliente"
+            class="p-2 h-12 w-[350px] bg-transparent text-white border border-color-font-gray rounded-l-md focus:outline-none">
+          <button (click)="registerNameCliente()"
+            class="p-2 text-white bg-color-btn border border-color-font-gray hover:bg-color-main h-12 rounded-r-md ml-auto">
+            Cadastrar
+          </button>
+        </div>
+
+        <button (click)="enviarPedido()"
+          class="text-white text-center border border-color-font-gray bg-color-btn hover:bg-color-main p-3 rounded">
+          Enviar pedido
+        </button>
+      </div>
+    </footer>
+  </section>
+</div>
