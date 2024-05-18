@@ -1,0 +1,7 @@
+<div [ngClass]="{'ocupada': ocupada}" class="container__card-mesa relative border-2 border-color-border-gray rounded-lg flex items-center justify-center shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-1.5">
+  <a [routerLink]="['/menu']" class="block text-center" (click)="redirectRegistrarPedido($event, mesaNumero)">
+    <h4 class="text-xl text-white mb-5">Mesa {{ mesaNumero }}</h4>
+
+    <img src="/assets/images/mesa.png" alt="" class="w-24 h-24 mx-auto" />
+  </a>
+</div>

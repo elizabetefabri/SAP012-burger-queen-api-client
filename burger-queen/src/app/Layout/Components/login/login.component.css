@@ -1,0 +1,38 @@
+h3{
+  font-size: 32px;
+  font-weight: bold;
+}
+.btn {
+  text-align: center;
+  align-items: center;
+  font-size: 20px;
+}
+button, input, select, a{
+  border-radius: 5px;
+}
+button{
+  border-radius: 5px;
+  cursor: pointer;
+}
+a:hover {
+  transform: scale(1.02);
+  opacity: 1;
+}
+select, input:focus {
+  outline: none;
+}
+select > option {
+  background-color: transparent;
+}
+.align-self-center {
+  align-self: center;
+}
+.content__login {
+  border: 2px solid #333333;
+  border-radius: 16px;
+ }
+ .mat-icon {
+  color: #373737;
+  height: 35px;
+  width: 35px;
+}

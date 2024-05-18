@@ -1,0 +1,28 @@
+<header class="container__header p-5 bg-color-header text-color-font-white">
+  <nav class="max-w-[800px] h-12 w-full mx-auto flex justify-between items-center">
+    <div class="flex items-center">
+      <a routerLink="/menu" class="text-color-font-gray">
+        <mat-icon aria-hidden="false" fontIcon="first_page" class="text-color-font-gray h-10 w-10"></mat-icon>
+      </a>
+      <a href="" class="pl-5">
+        <span class="text-color-font-orange">
+          <em class="text-color-font-orange pr-2">Mesa</em>{{ mesaId }}
+        </span>
+      </a>
+    </div>
+
+    <div class="flex items-center relative">
+      <button (click)="openModal()" class="pr-5 flex items-center">
+        <mat-icon aria-hidden="false" fontIcon="assignment" class="text-color-font-gray h-10 w-10"></mat-icon>
+        <a class="item-count text-color-font-gray mt-3 flex items-center justify-center ">{{ itemCount }}</a>
+      </button>
+
+      <a href="" class="flex items-center text-color-font-gray pr-10">
+        <em class="">Admin</em>
+      </a>
+      <a (click)="deslogar()" class="flex items-center text-color-font-gray">
+        <em class="">Sair</em>
+      </a>
+    </div>
+  </nav>
+</header>

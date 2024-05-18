@@ -1,0 +1,31 @@
+h4{
+  font-size: 16px;
+ }
+h5{
+  font-size: 16px;
+  margin-left: 1rem;
+  margin-bottom: 0;
+}
+.close-icon{
+  width: 30px;
+  font-size: 15px;
+}
+
+.order-section {
+  box-shadow: 10px -1px 75px -36px rgba(0,0,0,0.75);
+}
+
+.container__registra-produtos .order-section {
+  padding-top: 1rem;
+  /* padding-bottom: 1rem; */
+}
+
+.container__registra-produtos .order-section .flex.items-center h4 {
+  margin-bottom: 0;
+}
+
+.container__registra-produtos .order-section .flex.items-center h5 {
+  margin-left: 1rem;
+  margin-bottom: 0;
+}
+

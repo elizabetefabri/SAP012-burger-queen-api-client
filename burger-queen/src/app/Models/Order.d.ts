@@ -1,4 +1,4 @@
-import { Product } from './Produto.d';
+import { Product } from './Produto';
 
 export interface Order {
   id: number;

@@ -1,0 +1,23 @@
+<!-- COMPONENTE DE CARD DE PRODUTO -->
+<section class="container__registra-produtos pr-1 pl-1 bg-background-logado flex">
+  <main class="container__main max-w-[850px] w-full mx-auto mt-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div *ngFor="let item of items"
+        class="container__card-produtos relative border-2 border-color-font-gray rounded-lg flex items-center p-4">
+        <img class="w-20 h-20 object-cover mr-4" [src]="item.product.image" [alt]="item.product.name">
+
+        <div class="flex-grow">
+          <div class="text-left">
+            <h3 class="text-white text-lg">{{ item.product.name }}</h3>
+            <p class="text-md text-white">R$ {{ item.product.price }}</p>
+          </div>
+          <!-- COMPONENTE TOGGLE -->
+          <div class="absolute bottom-0 right-0 p-1 bg-color-header flex items-center rounded-lg">
+            <app-btn-toggle [item]="item" (quantityChange)="handleQuantityChange($event)">
+            </app-btn-toggle>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>

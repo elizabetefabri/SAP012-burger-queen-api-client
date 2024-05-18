@@ -1,4 +1,4 @@
-import { Product } from "src/Models/Produto";
+import { Product } from "src/app/Models/Produto";
 
 export function formatProducts(apiData: any): Product{
   // const urlAPI = 'https://raw.githubusercontent.com/elizabetefabri/burger-queen-api-mock/main/resources/images/';

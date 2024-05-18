@@ -1,0 +1,14 @@
+.container__card-mesa{
+  width: 180px;
+  height: 180px;
+}
+
+.container__card-mesa img{
+  width: 90px;
+  height: 90px;
+}
+
+.ocupada {
+  opacity: 0.5;
+  pointer-events: none;
+}
