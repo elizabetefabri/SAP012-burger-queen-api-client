@@ -1,7 +1,7 @@
 <app-header></app-header>
 <!-- COMPONENTE DE MENU -->
 <section class="container__registrar-pedido pr-1 pl-1  bg-color-background-logado flex flex-col">
-  <main class="max-w-[850px] w-full mx-auto mt-5">
+  <main class="max-w-[800px] w-full mx-auto mt-5">
     <mat-tab-group  color="success">
       <mat-tab label="Bebidas">
         <app-card-product [items]="beverages" (totalEmmiter)="registraTotal($event)"></app-card-product>
