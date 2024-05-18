@@ -5,6 +5,7 @@ import { CadastroComponent } from './Layout/Components/cadastro/cadastro.compone
 import { LoginComponent } from './Layout/Components/login/login.component';
 import { MenuComponent } from './Layout/Components/menu/menu.component';
 import { MesaComponent } from './Layout/Components/mesa/mesa.component';
+import { ChefOrdersComponent } from './Layout/Components/chef-orders/chef-orders.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'mesa', component: MesaComponent },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'menu', component: MenuComponent },
+  { path: 'chef-orders', component: ChefOrdersComponent }
 ];
 
 @NgModule({
