@@ -8,9 +8,9 @@ import { ProductService } from 'src/app/Shared/Services/Products/product.service
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
-export class MenuComponent implements OnInit{
+export class MenuComponent implements OnInit {
   @Input() type: string = '';
   @Input() product: Product[] = [];
   beverages: Item[] = [];
@@ -21,12 +21,26 @@ export class MenuComponent implements OnInit{
 
   order: Order = {
     id: 0,
-    client: "",
+    client: '',
     items: [],
-    userId: 0
-  }
+    userId: 0,
+    status: '',
+    dateEntry: '',
+    mesaId: '',
+    clientId: '',
+  };
 
-  @Output() totalEmit: EventEmitter<{ product: { product: Product, quantity: number }[], index: number, isSum: boolean, total: number }> = new EventEmitter<{ product: { product: Product, quantity: number }[], index: number, isSum: boolean, total: number }>();
+  @Output() totalEmit: EventEmitter<{
+    product: { product: Product; quantity: number }[];
+    index: number;
+    isSum: boolean;
+    total: number;
+  }> = new EventEmitter<{
+    product: { product: Product; quantity: number }[];
+    index: number;
+    isSum: boolean;
+    total: number;
+  }>();
 
   modal: boolean = false;
   totalPedido: number = 0;
@@ -49,7 +63,7 @@ export class MenuComponent implements OnInit{
         data.forEach((produto: Product) => {
           this.order.items.push({
             product: produto,
-            quantity: 0
+            quantity: 0,
           });
         });
         this.classificarProduto();
@@ -61,26 +75,44 @@ export class MenuComponent implements OnInit{
   }
 
   registraTotal(item: Item): void {
-    const index = this.order.items.findIndex(i => i.product.id === item.product.id);
+    const index = this.order.items.findIndex(
+      (i) => i.product.id === item.product.id
+    );
     if (index !== -1) {
       this.order.items[index] = item;
     } else {
       this.order.items.push(item);
     }
-    this.totalPedido = this.order.items.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+    this.totalPedido = this.order.items.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    );
 
-    const totalQuantity = this.order.items.reduce((total, item) => total + item.quantity, 0);
+    const totalQuantity = this.order.items.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
     this.productService.updateItemCount(totalQuantity);
 
     this.orderService.addItem(item);
   }
 
   classificarProduto(): void {
-    this.beverages = this.order.items.filter(item => item.product.tipo === "Beverages");
-    this.lunch = this.order.items.filter(item => item.product.tipo === "Lunch");
-    this.breakfast = this.order.items.filter(item => item.product.tipo === "Breakfast");
-    this.combos = this.order.items.filter(item => item.product.tipo === "Combos");
-    this.sides = this.order.items.filter(item => item.product.tipo === "Sides");
+    this.beverages = this.order.items.filter(
+      (item) => item.product.tipo === 'Beverages'
+    );
+    this.lunch = this.order.items.filter(
+      (item) => item.product.tipo === 'Lunch'
+    );
+    this.breakfast = this.order.items.filter(
+      (item) => item.product.tipo === 'Breakfast'
+    );
+    this.combos = this.order.items.filter(
+      (item) => item.product.tipo === 'Combos'
+    );
+    this.sides = this.order.items.filter(
+      (item) => item.product.tipo === 'Sides'
+    );
     this.order.items = [];
   }
 
@@ -92,4 +124,3 @@ export class MenuComponent implements OnInit{
     this.modal = false;
   }
 }
-
