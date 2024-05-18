@@ -1,1 +1,22 @@
-<p>chef-orders works!</p>
+<app-header></app-header>
+<div class="container  max-w-[800px] w-full mx-auto mt-4 p-5 text-white">
+  <h1 class="text-2xl mb-4">Pedidos Pendentes</h1>
+  <main class="grid grid-cols-1 md:grid-cols-2 gap-2">
+
+    <div *ngFor="let order of orders" class="back card-bord border border-color-font-green p-4 ">
+      <div class="container-header">
+        <p class="text-xl">Cliente: {{ order.client }}</p>
+        <p class="text-sm text-color-font-green">Mesa: {{ order.mesaId }}</p>
+      </div>
+      <ul class="mb-4">
+        <li *ngFor="let item of order.items">
+          {{ item.quantity }} x {{ item.product.name }} - R$ {{ item.product.price }}
+        </li>
+      </ul>
+      <div class="btn-flex">
+        <button (click)="markOrderAsReady(order)" class="bg-color-font-green text-white p-2 rounded">Marcar como
+          Pronto</button>
+      </div>
+    </div>
+  </main>
+</div>
