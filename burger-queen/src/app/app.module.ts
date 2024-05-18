@@ -19,6 +19,8 @@ import { ModalComponent } from './Layout/Components/menu/modal/modal.component';
 import { TotalComponent } from './Layout/Components/menu/total/total.component';
 import { ErrorDialogComponent } from './Shared/Components/error-dialog/error-dialog.component';
 import { CardsMesaComponent } from './Layout/Components/mesa/cards-mesa/cards-mesa.component';
+import { ChefOrdersComponent } from './Layout/Components/chef-orders/chef-orders.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { CardsMesaComponent } from './Layout/Components/mesa/cards-mesa/cards-me
     ModalComponent,
     TotalComponent,
     ErrorDialogComponent,
-    CardsMesaComponent
+    CardsMesaComponent,
+    ChefOrdersComponent
   ],
   imports: [
     AppModuleModule,
