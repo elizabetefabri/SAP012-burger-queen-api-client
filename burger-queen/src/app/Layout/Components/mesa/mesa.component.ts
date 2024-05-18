@@ -23,6 +23,10 @@ export class MesaComponent implements OnInit {
     { numero: '10', ocupada: false },
     { numero: '11', ocupada: false },
     { numero: '12', ocupada: false },
+    { numero: '13', ocupada: false },
+    { numero: '14', ocupada: false },
+    { numero: '15', ocupada: false },
+    { numero: '16', ocupada: false },
   ];
   mesaId: string = '';
   usuarioLogado: string = '';
