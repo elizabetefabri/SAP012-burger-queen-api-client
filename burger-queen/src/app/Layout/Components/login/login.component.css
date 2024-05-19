@@ -7,6 +7,10 @@ h3{
   align-items: center;
   font-size: 20px;
 }
+.container__login{
+  justify-content: center;
+  align-items: center;
+}
 button, input, select, a{
   border-radius: 5px;
 }

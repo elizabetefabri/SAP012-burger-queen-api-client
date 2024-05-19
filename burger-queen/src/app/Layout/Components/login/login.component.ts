@@ -71,4 +71,8 @@ export class LoginComponent implements OnInit {
   togglePasswordVisibility(): void {
     this.hide = !this.hide;
   }
+
+  goToCadastro(): void {
+    this.router.navigate(['/cadastro']);
+  }
 }
