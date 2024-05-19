@@ -1,0 +1,13 @@
+.container__main{
+  display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(2, minmax(0, 2fr));
+  }
+}
+
