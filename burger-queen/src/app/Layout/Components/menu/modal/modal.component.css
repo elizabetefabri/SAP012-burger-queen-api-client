@@ -29,3 +29,9 @@ h5{
   margin-bottom: 0;
 }
 
+@media (max-width: 640px) {
+  input, button {
+    border-radius: 5px;
+    height: 40px;
+  }
+}

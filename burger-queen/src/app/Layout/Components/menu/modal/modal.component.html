@@ -20,7 +20,7 @@
         <section class="order-section px-4 py-2 rounded-lg">
           <div *ngFor="let item of items" class="flex justify-between items-center border-b border-color-font-gray">
             <div class="flex items-center">
-              <h4 class="text-zinc-300 mb-0"> {{ item.quantity }} items: <span class="text-white">{{ item.product.name }}</span></h4>
+              <h4 class="text-zinc-300 mb-0">{{ item.quantity }} items: <span class="text-white">{{ item.product.name }}</span></h4>
               <mat-icon aria-hidden="false" fontIcon="fiber_manual_record" class="ml-5 text-sm text-color-font-orange"></mat-icon>
               <h5 class="text-white ml-5 mb-0">R$ {{ item.product.price * item.quantity }}</h5>
             </div>
@@ -40,18 +40,18 @@
     </main>
 
     <footer class="p-5 grid gap-4">
-      <div class="grid grid-cols-2 gap-2">
-        <div class="flex items-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <div class="flex flex-col md:flex-row items-center w-full">
           <input [(ngModel)]="nomeCliente" type="text" placeholder="Digite o nome do cliente"
-            class="p-2 h-12 w-[350px] bg-transparent text-white border border-color-font-gray rounded-l-md focus:outline-none">
+            class="p-2 h-12 w-full md:w-auto bg-transparent text-white border border-color-font-gray focus:outline-none mb-2 md:mb-0 md:rounded-l-md">
           <button (click)="registerNameCliente()"
-            class="p-2 text-white bg-color-btn border border-color-font-gray hover:bg-color-main h-12 rounded-r-md ml-auto">
+            class="p-2 text-white bg-color-btn border border-color-font-gray hover:bg-color-main h-12 w-full md:w-auto md:rounded-r-md ml-auto md:ml-0">
             Cadastrar
           </button>
         </div>
 
         <button (click)="enviarPedido()"
-          class="text-white text-center border border-color-font-gray bg-color-btn hover:bg-color-main p-3 rounded">
+          class="text-white text-center border border-color-font-gray bg-color-btn hover:bg-color-main p-3 rounded h-12 w-full">
           Enviar pedido
         </button>
       </div>
