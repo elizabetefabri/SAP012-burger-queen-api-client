@@ -26,8 +26,10 @@ export class MenuComponent implements OnInit {
     userId: 0,
     status: '',
     dateEntry: '',
+    dateProcessed: '',
     mesaId: '',
     clientId: '',
+    preparationTime: '',
   };
 
   @Output() totalEmit: EventEmitter<{

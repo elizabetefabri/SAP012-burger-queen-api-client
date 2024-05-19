@@ -8,6 +8,8 @@ export interface Order {
   items: Item[];
   status: string;
   dateEntry: string;
+  dateProcessed?: string;
+  preparationTime?: string;
   mesaId: string;
 }
 

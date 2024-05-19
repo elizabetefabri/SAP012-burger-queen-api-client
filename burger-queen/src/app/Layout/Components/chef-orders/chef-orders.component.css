@@ -14,3 +14,15 @@
 button {
   width: 100%;
 }
+
+.mat-snack-bar-container {
+  background-color: #4caf50; /* Cor de fundo verde */
+  color: white; /* Cor do texto */
+  text-align: center; /* Centraliza o texto */
+  font-size: 16px; /* Tamanho da fonte */
+}
+
+.mat-simple-snackbar-action {
+  color: white; /* Cor do botão de ação */
+}
+
