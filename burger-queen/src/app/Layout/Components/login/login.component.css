@@ -36,3 +36,10 @@ select > option {
   height: 35px;
   width: 35px;
 }
+@media (max-width: 640px) {
+  .content__login {
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
