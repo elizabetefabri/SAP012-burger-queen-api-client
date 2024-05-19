@@ -1,6 +1,8 @@
 .container__card-produtos {
   box-shadow: 0px -1px 14px -4px rgba(0,0,0,0.75);
   transition: transform 0.3s ease-in-out;
+  border-radius: 3px;
+
 }
 .container__card-produtos:hover {
   transform: translateY(-5px);

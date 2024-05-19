@@ -15,8 +15,8 @@
       <mat-tab label="Lanches">
         <app-card-product  [items]="lunch" (totalEmmiter)="registraTotal($event)"></app-card-product>
 
-        <section class="mx-auto p-1 bg-color-background-logado flex justify-center items-center rounded-lg">
-          <main class="sombra w-full  border-2 border-color-border-gray rounded-lg text-white p-6">
+        <section class="mx-auto p-1 bg-color-background-logado flex justify-center items-center rounded">
+          <main class="sombra w-full  border border-color-border-gray rounded text-white p-6">
             <app-total [totalPedido]="totalPedido"></app-total>
           </main>
         </section>
