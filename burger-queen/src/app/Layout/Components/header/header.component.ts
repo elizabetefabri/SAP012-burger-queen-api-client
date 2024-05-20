@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit{
   totalPedido: number = 0;
   isModalOpen: boolean = false;
   itemCount: number = 0;
+  isMenuOpen: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -51,4 +52,12 @@ export class HeaderComponent implements OnInit{
     this.auth.logout();
   }
 
+  // ADD RESPONSIVO DO MENU
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 }

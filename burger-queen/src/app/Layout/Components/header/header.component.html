@@ -1,8 +1,8 @@
 <header class="container__header p-5 bg-color-header text-color-font-white">
   <nav class="max-w-[800px] h-12 w-full mx-auto flex justify-between items-center">
     <div class="flex items-center">
-      <a routerLink="/mesa" class="text-color-font-gray">
-        <mat-icon aria-hidden="false" fontIcon="first_page" class="text-color-font-gray h-10 w-10"></mat-icon>
+      <a routerLink="/mesa" class="text-color-gray-icon">
+        <mat-icon aria-hidden="false" fontIcon="first_page" class="text-color-gray-icon h-10 w-10"></mat-icon>
       </a>
       <a routerLink="/mesa" class="pl-5">
         <span class="text-color-font-orange">
@@ -11,20 +11,24 @@
       </a>
     </div>
 
-    <div class="flex items-center relative">
-      <button (click)="openModal()" class="pr-5 flex items-center">
-        <mat-icon aria-hidden="false" fontIcon="assignment" class="text-color-font-gray h-10 w-10"></mat-icon>
-        <a class="item-count text-color-font-gray mt-3 flex items-center justify-center ">{{ itemCount }}</a>
+    <button class="menu-icon" (click)="toggleMenu()">
+      <img src="../../../../assets/images/menu.svg" class=" text-color-gray-icon h-10 w-10" alt="">
+    </button>
+
+    <div class="menu-links flex items-center relative" [ngClass]="{'hidden': !isMenuOpen, 'flex': isMenuOpen}">
+      <button (click)="openModal()" class="icon-mobile-none pr-5 flex items-center">
+        <mat-icon aria-hidden="false" fontIcon="assignment" class="text-color-gray-icon h-10 w-10"></mat-icon>
+        <a class="item-count text-color-gray-icon mt-3 flex items-center justify-center ">{{ itemCount }}</a>
       </button>
 
-      <a routerLink="/chef-orders" class="flex items-center text-color-font-gray pr-10">
+      <a routerLink="/chef-orders" class="flex items-center text-color-gray-icon pr-5" (click)="closeMenu()">
         <em class="">Pedidos</em>
       </a>
 
-      <a href="" class="flex items-center text-color-font-gray pr-10">
+      <a routerLink="/admin" class="flex items-center text-color-gray-icon pr-5" (click)="closeMenu()">
         <em class="">Admin</em>
       </a>
-      <a (click)="deslogar()" class="flex items-center text-color-font-gray">
+      <a (click)="deslogar()" class="flex items-center text-color-gray-icon" (click)="closeMenu()">
         <em class="">Sair</em>
       </a>
     </div>
