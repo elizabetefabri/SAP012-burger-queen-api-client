@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { catchError, map, Observable, of, Subject } from 'rxjs';
 import { Product } from 'src/app/Models/Produto';
 import { formatProducts } from 'src/app/Utils/transforms';
-import { AuthService } from '../Authentication/auth.service';
-import { MatDialog } from '@angular/material/dialog';
+
 import { ErrorDialogComponent } from '../../Components/error-dialog/error-dialog.component';
+import { AuthService } from '../Authentication/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,20 @@ export class ProductService {
       Authorization: `Bearer ${token}`,
     });
   }
-  // Métodos para listar os produtos
+
+  registerProduct(product: Product): Observable<Product> {
+    const headers = this.getAuthorizationHeader();
+    const { id, ...productData } = product; // Removendo o ID para permitir autoincrement
+    return this.http
+      .post<Product>(`${this.urlAPI}/products`, productData, { headers })
+      .pipe(
+        catchError((error) => {
+          this.onError('Erro ao cadastrar produto. 😕');
+          return of(product);
+        })
+      );
+  }
+
   listProducts(): Observable<Product[]> {
     const headers = this.getAuthorizationHeader();
     return this.http
@@ -44,19 +58,6 @@ export class ProductService {
       );
   }
 
-  listProductsByType(type: string): Observable<Product[]> {
-    const headers = this.getAuthorizationHeader();
-    return this.http
-      .get<Product[]>(`${this.urlAPI}/products?type=${type}`, { headers })
-      .pipe(
-        catchError((error) => {
-          this.onError('Erro ao carregar produtos. 😕');
-          return of([]);
-        })
-      );
-  }
-
-  // Método para obter um produto específico pelo ID
   getProductById(id: number): Observable<Product> {
     const headers = this.getAuthorizationHeader();
     return this.http
@@ -65,7 +66,6 @@ export class ProductService {
         map((apiData) => formatProducts(apiData)),
         catchError((error) => {
           this.onError('Erro ao carregar produto. 😕');
-          // Retornar um objeto Produto padrão em caso de erro
           return of({
             id: -1,
             name: 'Erro ao carregar',
@@ -80,6 +80,33 @@ export class ProductService {
   updateItemCount(count: number) {
     this.itemCount.next(count);
   }
+
+  deleteProduct(id: number): Observable<void> {
+    const headers = this.getAuthorizationHeader();
+    return this.http
+      .delete<void>(`${this.urlAPI}/products/${id}`, { headers })
+      .pipe(
+        catchError((error) => {
+          this.onError('Erro ao excluir produto. 😕');
+          return of();
+        })
+      );
+  }
+
+  updateProduct(product: Product): Observable<Product> {
+    const headers = this.getAuthorizationHeader();
+    return this.http
+      .put<Product>(`${this.urlAPI}/products/${product.id}`, product, {
+        headers,
+      })
+      .pipe(
+        catchError((error) => {
+          this.onError('Erro ao atualizar produto. 😕');
+          return of(product);
+        })
+      );
+  }
+
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg,
