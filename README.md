@@ -93,7 +93,7 @@ ng test
 ![Imagem desktop](./burger-queen/src/assets/images/page-login.png)
 
 ## 💻 Página de Registra um Cadastro
-![Imagem desktop](./burger-queen/src/assets/images/page-cadastro.png)
+![Imagem desktop](./burger-queen/src/assets/images/page-cadastre.png)
 
 ## 💻 Página de Registra Mesa
 ![Imagem desktop](./burger-queen/src/assets/images/page-mesa.png)
