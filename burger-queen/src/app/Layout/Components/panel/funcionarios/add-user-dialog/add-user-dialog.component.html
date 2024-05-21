@@ -1,0 +1,31 @@
+<section class="container__add-user ">
+  <h2 mat-dialog-title>Adicionar Usuário</h2>
+<mat-dialog-content class="  p-5">
+  <form [formGroup]="addUserForm" class="space-y-4">
+    <mat-form-field class="w-full">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" class=" ">
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label class="">Email</mat-label>
+      <input matInput formControlName="email" class=" ">
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Cargo</mat-label>
+      <mat-select formControlName="role" class=" ">
+        <mat-option value="admin">Admin</mat-option>
+        <mat-option value="waiter">Garçonete</mat-option>
+        <mat-option value="chef">Chefe de cozinha</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="password" type="password" class=" ">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class=" text-white  p-4">
+  <button mat-button (click)="onNoClick()" class=" bg-color-font-orange p-2 rounded">Cancelar</button>
+  <button mat-button [mat-dialog-close]="addUserForm.value" [disabled]="addUserForm.invalid" class=" p-2 rounded ml-2">Salvar</button>
+</mat-dialog-actions>
+</section>

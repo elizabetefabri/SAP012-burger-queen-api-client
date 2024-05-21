@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Adicionar Produto</h2>
+<mat-dialog-content class="pr-5">
+  <form [formGroup]="addProductForm" class="space-y-4">
+    <mat-form-field class="w-full">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" class="">
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Preço</mat-label>
+      <input matInput formControlName="price" type="number" class="">
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Imagem</mat-label>
+      <input matInput formControlName="image" class="">
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="type" class="">
+        <mat-option value="beverages">Bebidas</mat-option>
+        <mat-option value="lunch">Lanches</mat-option>
+        <mat-option value="breakfast">Café da Manhã</mat-option>
+        <mat-option value="combo">Combos</mat-option>
+        <mat-option value="sides">Saladas</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" >Cancelar</button>
+  <button mat-button [mat-dialog-close]="addProductForm.value" [disabled]="addProductForm.invalid" class="text-white bg-blue-500 p-2 rounded ml-2">Salvar</button>
+</mat-dialog-actions>

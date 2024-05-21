@@ -1,7 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,6 +19,16 @@ import { TotalComponent } from './Layout/Components/menu/total/total.component';
 import { ErrorDialogComponent } from './Shared/Components/error-dialog/error-dialog.component';
 import { CardsMesaComponent } from './Layout/Components/mesa/cards-mesa/cards-mesa.component';
 import { ChefOrdersComponent } from './Layout/Components/chef-orders/chef-orders.component';
+import { AdmComponent } from './Layout/Components/panel/adm/adm.component';
+import { FuncionariosComponent } from './Layout/Components/panel/funcionarios/funcionarios.component';
+import { ProdutosComponent } from './Layout/Components/panel/produtos/produtos.component';
+import { CategoryPipe } from './Shared/Pipes/Category/category.pipe';
+import { EditUserDialogComponent } from './Layout/Components/panel/funcionarios/edit-user-dialog/edit-user-dialog.component';
+import { UserService } from './Shared/Services/Users/user.service';
+import { ErrorListComponent } from './Shared/Components/error-list/error-list.component';
+import { AddUserDialogComponent } from './Layout/Components/panel/funcionarios/add-user-dialog/add-user-dialog.component';
+import { AddProductDialogComponent } from './Layout/Components/panel/produtos/add-product-dialog/add-product-dialog.component';
+import { EditProductDialogComponent } from './Layout/Components/panel/produtos/edit-product-dialog/edit-product-dialog.component';
 
 
 @NgModule({
@@ -36,19 +45,27 @@ import { ChefOrdersComponent } from './Layout/Components/chef-orders/chef-orders
     TotalComponent,
     ErrorDialogComponent,
     CardsMesaComponent,
-    ChefOrdersComponent
+    ChefOrdersComponent,
+    AdmComponent,
+    FuncionariosComponent,
+    ProdutosComponent,
+    CategoryPipe,
+    EditUserDialogComponent,
+    ErrorListComponent,
+    AddUserDialogComponent,
+    AddProductDialogComponent,
+    EditProductDialogComponent
   ],
   imports: [
     AppModuleModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

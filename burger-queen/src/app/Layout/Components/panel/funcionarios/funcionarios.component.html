@@ -1,0 +1,56 @@
+<mat-card>
+  <mat-toolbar style="display: flex;
+  background-color: #1e1e1e;
+  color: aliceblue;
+  border: 1px solid #333;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: wrap;" >
+    Adicione um novo Funcionário
+    <div class="btn-funcionario">
+      <button mat-icon-button (click)="addUser()" class="flex items-center justify-center shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-1">
+        <mat-icon style="color: orangered;" >person_add</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div *ngIf="usuarios$ | async as usuarios; else loading">
+    <table mat-table [dataSource]="usuarios" class="mat-elevation-z8" style="background-color: #1e1e1e; border: 1px solid #333;">
+      <!-- Nome Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef style="color: #ffffff; border: 1px solid #333;"> Nome do Funcionário </th>
+        <td mat-cell *matCellDef="let user" style="color: #ffffff; border: 1px solid #333;"> {{user.name}} </td>
+      </ng-container>
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef style="color: #ffffff; border: 1px solid #333;"> Email </th>
+        <td mat-cell *matCellDef="let user" style="color: #ffffff; border: 1px solid #333;"> {{user.email}} </td>
+      </ng-container>
+      <!-- Role Column -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef style="color: #ffffff; border: 1px solid #333;"> Cargo </th>
+        <td mat-cell *matCellDef="let user" style="color: #ffffff; border: 1px solid #333;"> {{user.role}} </td>
+      </ng-container>
+      <!-- Ações Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef style="color: #ffffff; border: 1px solid #333;"> Ações </th>
+        <td mat-cell *matCellDef="let user" style="color: #ffffff; border: 1px solid #333;">
+          <button mat-icon-button (click)="editUser(user)">
+            <mat-icon style="color: #ffffff;">edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteUser(user)">
+            <mat-icon style="color: orangered;" >delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['name', 'email', 'role', 'actions']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['name', 'email', 'role', 'actions']"></tr>
+    </table>
+  </div>
+  <!-- SPINNER PARA CARREGAR OS ELEMENTOS -->
+  <ng-template #loading>
+    <div class="flex justify-center">
+      <mat-progress-bar class="bg-orange-500 spinner-movie" mode="indeterminate"></mat-progress-bar>
+    </div>
+  </ng-template>
+</mat-card>
