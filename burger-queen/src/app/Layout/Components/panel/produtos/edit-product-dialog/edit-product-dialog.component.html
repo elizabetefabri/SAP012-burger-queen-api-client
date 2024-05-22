@@ -1,6 +1,7 @@
 <h2 mat-dialog-title class=" text-white">Editar Produto</h2>
 <mat-dialog-content class=" text-white p-5">
   <form [formGroup]="editProductForm" class="space-y-4">
+    <!-- <input type="hidden" formControlName = "id" /> -->
     <mat-form-field class="w-full">
       <mat-label>Nome</mat-label>
       <input matInput formControlName="name" class=" text-white">
@@ -15,7 +16,7 @@
     </mat-form-field>
     <mat-form-field class="w-full">
       <mat-label>Tipo</mat-label>
-      <mat-select formControlName="tipo" class=" text-white">
+      <mat-select formControlName="type" class=" text-white">
         <mat-option value="beverages">Bebidas</mat-option>
         <mat-option value="lunch">Lanches</mat-option>
         <mat-option value="breakfast">Café da Manhã</mat-option>
@@ -27,5 +28,10 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end" class=" p-4">
   <button mat-button (click)="onNoClick()" class="text-white p-2 rounded">Cancelar</button>
-  <button mat-button [mat-dialog-close]="editProductForm.value" [disabled]="editProductForm.invalid" class="text-white p-2 rounded ml-2">Salvar</button>
+  <button
+  mat-button
+  [mat-dialog-close]="editProductForm.value"
+  [disabled]="editProductForm.invalid"
+  class="text-white p-2 rounded ml-2"
+  >Salvar</button>
 </mat-dialog-actions>

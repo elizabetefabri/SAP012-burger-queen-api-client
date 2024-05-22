@@ -48,6 +48,32 @@ export class ProdutosComponent {
     }
   }
 
+  // editProduct(product: Product) {
+  //   const dialogRef = this.dialog.open(EditProductDialogComponent, {
+  //     data: product
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(result)
+  //     if (result) {
+  //       this.product.updateProduct(result).subscribe( {
+  //         next: (data: any) => {
+  //           console.log(data)
+  //           this.products$ = this.product.listProducts().pipe(
+  //             catchError(error => {
+  //               this.onError('Erro ao carregar a lista de usuários. 😕');
+  //               console.log(error);
+  //               return of([]);
+  //             })
+  //           );
+  //         },
+  //         error: (error) => {
+  //           console.error(error);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
   editProduct(product: Product) {
     const dialogRef = this.dialog.open(EditProductDialogComponent, {
       data: product
@@ -66,7 +92,6 @@ export class ProdutosComponent {
       }
     });
   }
-
   addProduct() {
     const dialogRef = this.dialog.open(AddProductDialogComponent, {
       data: {name: '', price: '', image: '', type: ''}

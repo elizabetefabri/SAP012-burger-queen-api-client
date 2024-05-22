@@ -69,6 +69,7 @@ export class MenuComponent implements OnInit {
           });
         });
         this.classificarProduto();
+        console.log(data);
       },
       error: (error) => {
         console.log('Erro ao carregar os produtos: ', error);
@@ -101,19 +102,19 @@ export class MenuComponent implements OnInit {
 
   classificarProduto(): void {
     this.beverages = this.order.items.filter(
-      (item) => item.product.tipo === 'Beverages'
+      (item) => item.product.tipo?.toLowerCase() === 'beverages'
     );
     this.lunch = this.order.items.filter(
-      (item) => item.product.tipo === 'Lunch'
+      (item) => item.product.tipo?.toLowerCase() === 'lunch'
     );
     this.breakfast = this.order.items.filter(
-      (item) => item.product.tipo === 'Breakfast'
+      (item) => item.product.tipo?.toLowerCase() === 'breakfast'
     );
     this.combos = this.order.items.filter(
-      (item) => item.product.tipo === 'Combos'
+      (item) => item.product.tipo?.toLowerCase() === 'combos'
     );
     this.sides = this.order.items.filter(
-      (item) => item.product.tipo === 'Sides'
+      (item) => item.product.tipo?.toLowerCase() === 'sides'
     );
     this.order.items = [];
   }

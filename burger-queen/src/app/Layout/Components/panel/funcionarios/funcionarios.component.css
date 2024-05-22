@@ -1,5 +1,10 @@
+.container--mat-car{
+
+}
 table {
   width: 100%;
+  box-shadow: 0px -1px 14px -10px rgba(0,0,0,0.75);
+  transition: transform 0.3s ease-in-out;
 }
 
 .mat-mdc-form-field {

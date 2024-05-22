@@ -54,6 +54,7 @@ export class ProductService {
         catchError((error) => {
           this.onError('Erro ao carregar produtos. 😕');
           return of([]);
+          // return error;
         })
       );
   }
@@ -95,6 +96,7 @@ export class ProductService {
 
   updateProduct(product: Product): Observable<Product> {
     const headers = this.getAuthorizationHeader();
+    console.log(product)
     return this.http
       .put<Product>(`${this.urlAPI}/products/${product.id}`, product, {
         headers,
@@ -102,6 +104,7 @@ export class ProductService {
       .pipe(
         catchError((error) => {
           this.onError('Erro ao atualizar produto. 😕');
+          console.error(error);
           return of(product);
         })
       );

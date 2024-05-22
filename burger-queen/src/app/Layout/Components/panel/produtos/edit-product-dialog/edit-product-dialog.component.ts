@@ -16,11 +16,13 @@ export class EditProductDialogComponent {
     public dialogRef: MatDialogRef<EditProductDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Product
   ) {
+    console.log(this.data)
     this.editProductForm = this.fb.group({
+      id: [data.id],
       name: [data.name, Validators.required],
       price: [data.price, Validators.required],
       image: [data.image, Validators.required],
-      tipo: [data.tipo, Validators.required],
+      type: [data.tipo, Validators.required],
     });
   }
 
