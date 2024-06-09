@@ -10,28 +10,13 @@ import { AuthService } from 'src/app/Shared/Services/Authentication/auth.service
 })
 export class MesaComponent implements OnInit {
   @Input() login: Login[] = [];
-  mesas: { numero: string; ocupada: boolean }[] = [
-    { numero: '01', ocupada: false },
-    { numero: '02', ocupada: false },
-    { numero: '03', ocupada: false },
-    { numero: '04', ocupada: false },
-    { numero: '05', ocupada: false },
-    { numero: '06', ocupada: false },
-    { numero: '07', ocupada: false },
-    { numero: '08', ocupada: false },
-    { numero: '09', ocupada: false },
-    { numero: '10', ocupada: false },
-    { numero: '11', ocupada: false },
-    { numero: '12', ocupada: false },
-    { numero: '13', ocupada: false },
-    { numero: '14', ocupada: false },
-    { numero: '15', ocupada: false },
-    { numero: '16', ocupada: false },
-  ];
+  mesas: { numero: string; ocupada: boolean }[] = [];
   mesaId: string = '';
   usuarioLogado: string = '';
 
-  constructor(private auth: AuthService, private router: ActivatedRoute) {}
+  constructor(private auth: AuthService, private router: ActivatedRoute) {
+    this.createMesas(16);
+  }
 
   ngOnInit(): void {
     if (this.auth.isAuthenticated()) {
@@ -43,8 +28,16 @@ export class MesaComponent implements OnInit {
     }
 
     this.router.queryParams.subscribe((params) => {
-      this.mesaId = params['mesaId'] || '';
+      this.mesaId = localStorage.getItem('mesa') || params['mesaId'] || '';
     });
+  }
+
+  createMesas(totalMesas: number): void {
+    for(let i = 1; i <= totalMesas; i++){
+      this.mesas.push({
+        numero: i.toString().padStart(2, '0'), ocupada: false
+      })
+    }
   }
 
   deslogar() {
@@ -54,6 +47,7 @@ export class MesaComponent implements OnInit {
     const mesa = this.mesas.find((m) => m.numero === numero);
     if (mesa) {
       mesa.ocupada = true;
+      localStorage.setItem('mesa', numero);
     }
   }
 }
