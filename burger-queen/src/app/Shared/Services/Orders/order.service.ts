@@ -9,7 +9,7 @@ import { Item, Order } from 'src/app/Models/Order';
   providedIn: 'root',
 })
 export class OrderService {
-  private readonly apiUrl = 'https://burger-queen-api-mock.up.railway.app';
+  private readonly apiUrl = 'https://burgerqueenapimock.vercel.app';
   private modalStateSource = new BehaviorSubject<boolean>(false);
   modalState = this.modalStateSource.asObservable();
   private itemsSource = new BehaviorSubject<Item[]>([]);

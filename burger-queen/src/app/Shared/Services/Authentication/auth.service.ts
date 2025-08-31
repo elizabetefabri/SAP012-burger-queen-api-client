@@ -9,7 +9,8 @@ import { User } from 'src/app/Models/Usuario';
 })
 export class AuthService {
   private readonly apiUrl: string =
-    'https://burger-queen-api-mock.up.railway.app';
+    'https://burgerqueenapimock.vercel.app';
+
   private currentUser: BehaviorSubject<User | null> =
     new BehaviorSubject<User | null>(null);
 
@@ -45,15 +46,18 @@ export class AuthService {
   }
 
   registerUser(user: User): Observable<User> {
-    return this.http
-      .post<User>(`${this.apiUrl}/users`, user, this.getHttpOptions())
-      .pipe(
-        catchError((error) => {
-          console.error('Registration failed:', error);
-          throw error;
-        })
-      );
-  }
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + localStorage.getItem('token'),
+  });
+
+  return this.http.post<User>(`${this.apiUrl}/users`, user, { headers }).pipe(
+    catchError((error) => {
+      console.error('Erro ao registrar usuário:', error);
+      throw error;
+    })
+  );
+}
 
   updateUser(id: string, user: User): Observable<User> {
     return this.http.put<User>(

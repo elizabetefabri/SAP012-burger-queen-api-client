@@ -12,7 +12,7 @@ import { AuthService } from '../Authentication/auth.service';
   providedIn: 'root',
 })
 export class ProductService {
-  private readonly urlAPI = 'https://burger-queen-api-mock.up.railway.app';
+  private readonly urlAPI = 'https://burgerqueenapimock.vercel.app';
   private itemCount = new Subject<number>();
 
   itemCount$ = this.itemCount.asObservable();

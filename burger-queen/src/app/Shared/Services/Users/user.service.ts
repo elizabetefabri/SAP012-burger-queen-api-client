@@ -10,7 +10,7 @@ import { ErrorDialogComponent } from '../../Components/error-dialog/error-dialog
   providedIn: 'root'
 })
 export class UserService {
-  private readonly apiUrl = 'https://burger-queen-api-mock.up.railway.app';
+  private readonly apiUrl = 'https://burgerqueenapimock.vercel.app';
 
   constructor(
     private http: HttpClient,
